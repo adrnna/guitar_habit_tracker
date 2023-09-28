@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p class="motivation-text">{{ textContent.motivation }}</p>
+<div class="chart-canvas">
+    <canvas id="myChart" ></canvas>
+    <figcaption>Your performance</figcaption>
+</div>
+{% endblock %}

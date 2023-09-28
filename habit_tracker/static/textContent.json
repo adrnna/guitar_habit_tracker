@@ -1,0 +1,29 @@
+{
+    "title": "Progress Tracker",
+    "aboutMe": "About",
+    "contact": "Contact",
+    "greeting": "Hey, ",
+    "logout": "Log out",
+    "login": "Log in",
+    "signup": "Sign up",
+    "titleCenterPage": "Welcome to the Progress Tracker!",
+    "motivation": "Practice 40h/day.",
+    "home": "Home",
+    "startNewSession": "Start New Session",
+    "chooseYourRoutine": "Choose Your Routine",
+    "composeYourRoutine": "Compose a New Routine",
+    "editYourRoutines": "Edit your Routines",
+    "justJam": "Just Jam",
+    "browseOldSessions": "Browse Old Sessions",
+
+    "overlayText": "This is an overlay content.",
+    "newRoutineTitle": "Compose a new routine:",
+    "newRoutineInstructions": "Compose your routine by setting up what you want to practice and for how long:",
+    "inputPlaceholder": "Enter name",
+    "stripeOptions": ["WARM-UP:", "EXERCISE:", "ARPEGGIO:", "SONG:"],
+    "timeValues": ["5 min", "10 min", "15 min", "20 min", "30 min", "45 min", "1h"],
+    "addLink": "Add a link:",
+    "addDescription": "Add a description",
+
+    "sidebarFooterSignature": "adrnna 2023"
+}
