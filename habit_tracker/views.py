@@ -2,14 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.staticfiles import finders
 from .forms import CustomUserCreationForm
-from .models import PracticeLog
+from .models import PracticeLog, Routine
 # from .models import Routine
-from django.http import JsonResponse
+# from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import json
 
 def index(request):
-    return render(request, 'habit_tracker/index.html',)# {'logs': logs})
+    return render(request, 'habit_tracker/index.html')# {'logs': logs})
 
 def signup(request):
     if request.method == 'POST':
@@ -28,6 +27,10 @@ def justjam(request):
 
 def newroutine(request):
     return render(request, 'habit_tracker/newroutine.html',)
+
+def editroutines(request):
+    routine_list = Routine.objects.all()
+    return render(request, 'habit_tracker/editroutines.html', {'routine_list': routine_list})
 
 # @csrf_exempt  # Disable CSRF protection for this example (not recommended for production)
 # def save_data(request):

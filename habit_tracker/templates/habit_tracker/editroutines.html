@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="overlay-content">
+    <p>{{ textContent.editRoutineTitle }}</p>
+    <div id="overlayContainer" class="overlay-container active">
+        <!-- <p class="overlay-text">{{ textContent.newRoutineInstructions }}</p> -->
+        {% for routine in routine_list %}
+        <div class="stripe-container stripe-{{ forloop.counter }}">
+            <div class="stripe-and-collapsible">
+                <div class="overlay-stripe routine">
+                    <p class="routine_title">{{ routine.routine_name }}</p>
+                    <ul>
+                        {% for exercise in routine.exercise.all %}
+                            <div class="exercise-info"></li>
+                                <p>Name: {{ exercise.name }}</p>
+                                <p>Time: {{ exercise.time }} min</p>
+                                <p>Description: {{ exercise.description }}</p>
+                                <p>Link: <a href="{{ exercise.link }}">{{ exercise.link }}</a><br/></p>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                    <br/>
+                </div>  
+            </div>  
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

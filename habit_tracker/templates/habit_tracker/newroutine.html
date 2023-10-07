@@ -5,6 +5,12 @@
     <p>{{ textContent.newRoutineTitle }}</p>
     <div id="overlayContainer" class="overlay-container active">
         <p class="overlay-text">{{ textContent.newRoutineInstructions }}</p>
+        <div class="input-container">
+            <input class="input-box name" type="text" onclick="changeColor(this)" id="inputValue" placeholder="{{ textContent.inputRoutineNamePlaceholder }}">
+            <button class="btn btn-confirm" onclick="toggleInput(this)">
+                <span class="material-symbols-outlined">check</span>
+            </button>
+        </div>
         {% for option in textContent.stripeOptions %}
             <div class="stripe-container stripe-{{ forloop.counter }}">
                 <div class="stripe-and-collapsible">

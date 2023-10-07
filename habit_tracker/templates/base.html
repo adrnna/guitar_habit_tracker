@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ textContent.title }}</title>
     {% load static %}
-    <script type="application/json" id="textContent">
+    <!-- <script type="application/json" id="textContent">
         {{ textContent | json_script:"textContentData" }}
-    </script>
+    </script> -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +56,8 @@
                     <span>{{ textContent.editYourRoutines }}</span> 
                 </button>
                 <div id="rolloutOptions">
-                    <button class="btn btn-sidebar rollout-options">{{ textContent.editYourRoutines }}</button>
+                    <!-- <button class="btn btn-sidebar rollout-options">{{ textContent.editYourRoutines }}</button> -->
+                    <a class="btn btn-sidebar rollout-options" type=button href="{% url 'editroutines' %}">{{ textContent.editYourRoutines }}</a>
                     <a class="btn btn-sidebar rollout-options" type=button href="{% url 'newroutine' %}">{{ textContent.composeYourRoutine }}</a>
                 </div>
             </div>

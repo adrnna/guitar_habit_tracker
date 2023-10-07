@@ -10,5 +10,6 @@ urlpatterns = [
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('justjam/', views.justjam, name='justjam'),
     path('newroutine/', views.newroutine, name='newroutine'),
+    path('editroutines/', views.editroutines, name='editroutines'),
     # path('api/save_data/', save_data, name='save_data'),
 ]

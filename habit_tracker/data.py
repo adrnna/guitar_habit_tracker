@@ -1,4 +1,4 @@
-{
+textContent = {
     "title": "Progress Tracker",
     "aboutMe": "About",
     "contact": "Contact",
@@ -18,9 +18,11 @@
 
     "overlayText": "This is an overlay content.",
     "newRoutineTitle": "Compose a new routine:",
+    "editRoutineTitle": "Here are all your routines:",
     "newRoutineInstructions": "Compose your routine by setting up what you want to practice and for how long:",
+    "inputRoutineNamePlaceholder": "Enter routine name",
     "inputPlaceholder": "Enter name",
-    "stripeOptions": ["WARM-UP:", "EXERCISE:", "ARPEGGIO:", "SONG:"],
+    "stripeOptions": ["WARM-UP", "EXERCISE", "ARPEGGIO", "SONG"],
     "timeValues": ["5 min", "10 min", "15 min", "20 min", "30 min", "45 min", "1h"],
     "addLink": "Add a link:",
     "addDescription": "Add a description",

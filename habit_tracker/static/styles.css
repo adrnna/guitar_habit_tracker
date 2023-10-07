@@ -665,3 +665,37 @@ textarea{
 .btn-remove-stripe .material-symbols-outlined:hover {
     color: #6f0707fa
 }
+
+.routine_title {
+    text-align: left;
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px
+}
+
+.exercise-info {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px; 
+    color: rgba(247, 154, 41, 0.966); 
+    padding: 10px;
+}
+
+.exercise-info p {
+    margin-bottom: 5px; 
+  }
+
+.exercise-link {
+    text-align: left;
+    color: blue; 
+    text-decoration: underline;
+    font-size: 12px; 
+}
+
+.routine {
+    display: block;
+    width: 300px;
+    height: auto;
+}
