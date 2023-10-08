@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'routines',  # Replace with your database name
         'USER': 'adrnna',       # Replace with your PostgreSQL username
-        'PASSWORD': '326AdPo!',  # Replace with your PostgreSQL password
+        'PASSWORD': '',  # Replace with your PostgreSQL password
         'HOST': 'localhost',      # Replace with the database host (usually 'localhost')
         'PORT': '',               # Leave empty for default PostgreSQL port (5432)
     }
