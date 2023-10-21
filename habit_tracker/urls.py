@@ -9,7 +9,7 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('justjam/', views.justjam, name='justjam'),
-    path('newroutine/', views.newroutine, name='newroutine'),
+    path('add_routine/', views.add_routine, name='add_routine'),
     path('editroutines/', views.editroutines, name='editroutines'),
     # path('api/save_data/', save_data, name='save_data'),
 ]

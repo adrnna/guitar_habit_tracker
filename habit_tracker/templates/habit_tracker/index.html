@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p class="motivation-text">{{ textContent.motivation }}</p>
-<div class="chart-canvas">
-    <canvas id="myChart" ></canvas>
-    <figcaption>Your performance</figcaption>
+<div class="overlay-content">
+    <p class="motivation-text">{{ textContent.motivation }}</p>
+    <div id="overlayContainer" class="overlay-container active">
+        <div class="chart-canvas">
+            <canvas id="myChart" ></canvas>
+            <figcaption>Your performance</figcaption>
+        </div>
+    </div>
 </div>
 {% endblock %}

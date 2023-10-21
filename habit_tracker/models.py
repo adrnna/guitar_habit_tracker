@@ -18,7 +18,7 @@ class Exercise(models.Model):
         return self.name
 
 class Routine(models.Model):
-    routine_name = models.CharField(max_length=200, default='Routine')
+    routine_name = models.CharField(max_length=200, default='')
     exercise = models.ManyToManyField(Exercise, blank = True, null = True,)
 
     def __str__(self):

@@ -1,29 +1,44 @@
+// Check screen width and set initial state
+window.addEventListener('load', function() {
+    var sidebar = document.querySelector('.sidebar');
+    const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
+    const arrowIcon = toggleSidebarButton.querySelector('.navbar');
+
+    if (window.innerWidth > 768) { // Adjust the breakpoint as needed
+        sidebar.classList.add("active");
+        arrowIcon.classList.add("active");
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     const overlayContainer = document.getElementById("overlayContainer");
     let activeDropdown = null;
     const rolloutOptionsButtons = document.querySelectorAll(".rollout-options-button");
-    // const rolloutOptionsButtons = document.getElementById("rolloutOptionsButton");
-    // const rolloutOptionsDiv = rolloutOptionsButtons.nextElementSibling;
-    // const rolloutOptionsDiv = document.querySelector("#rolloutOptions");
-    // const newSessionOptionsDiv = document.getElementById("rolloutOptions");
-
+    const collapsibleButton = document.querySelectorAll(".btn-collapsible");
+ 
     if (rolloutOptionsButtons) {
         rolloutOptionsButtons.forEach(function(button) {
             button.addEventListener("click", function() {
-                // const rolloutOptionsDiv = button.closest("#rolloutOptions");
                 const rolloutOptionsDiv = button.nextElementSibling;
-                // const rolloutOptionsDiv = button.closest("#rolloutOptions");
-                console.log(rolloutOptionsDiv);
-                console.log("clicked");
 
                 if (rolloutOptionsDiv) {
-                    console.log("clicked and has options");
                     rolloutOptionsDiv.classList.toggle("visible");
                 }
             })
         })
     };
 
+    // Attach event listener for toggling sidebar
+    if (collapsibleButton) {
+        collapsibleButton.forEach(function(button) {
+            button.addEventListener("click", function() {
+                
+                if (button.parentElement.classList.contains('toggle-sidebar-button')){
+                    toggleSidebar();
+                }
+            })
+        })
+    };
 
     if (overlayContainer) {
         // Attach event listener for dropdown button clicks
@@ -66,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
+        // Attach event listener for collapsible button
         overlayContainer.addEventListener("click", function(event) {
             const collapsibleButton = event.target.closest('.btn-collapsible');
             if (collapsibleButton) {
@@ -127,6 +143,20 @@ document.addEventListener("DOMContentLoaded", function() {
         } else { 
             collapsibleContent.style.height = null;
             // collapsibleContent.style.height = "0px"; // Collapse the content
+        }
+    }
+
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
+        const arrowIcon = toggleSidebarButton.querySelector('.navbar');
+        sidebar.classList.toggle("active");
+        arrowIcon.classList.toggle("active");
+
+        if (sidebar.width === "0px" || !sidebar.width) {
+            sidebar.width = sidebar.scrollWidth + "px"; // Expand the content
+        } else { 
+            sidebar.width = null;
         }
     }
     
