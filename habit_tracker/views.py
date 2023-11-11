@@ -3,9 +3,10 @@ from django.contrib.auth import login
 from django.contrib.staticfiles import finders
 from django.http import HttpResponseRedirect
 from .forms import CustomUserCreationForm
-from .models import PracticeLog, Routine
-from .forms import RoutineForm, ExerciseForm
+from .models import PracticeLog, Routine, Exercise
+from .forms import RoutineForm, modelformset_factory, ExerciseForm, ExerciseFormSet
 from django.forms import formset_factory
+from .data import textContent
 # from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
@@ -31,42 +32,43 @@ def justjam(request):
 
 def add_routine(request):
     submitted = False
-    ExerciseFormSet = formset_factory(ExerciseForm, max_num=5)
+    
     if request.method == 'POST':
         routine_form = RoutineForm(request.POST)
-        exercise_formset = ExerciseFormSet(request.POST, prefix='exercise')
+        exercise_formset = ExerciseFormSet(request.POST, queryset=Exercise.objects.none(), )# initial=data)# prefix='exercise')
+        # unique_id = 0
+        
         if routine_form.is_valid() and exercise_formset.is_valid():
-            # Save the routine
             routine = routine_form.save()
-            # Save each exercise and associate it with the routine
-            for exercise_form in exercise_formset:
-                exercise = exercise_form.save(commit=False)
-                exercise.save()
-                routine.exercise.add(exercise)
+            for i, exercise_form in enumerate(exercise_formset):
+                if exercise_form.is_valid():
+                    # exercise_form.unique_id = i
+                    # exercise_form.prefix = f'exercise-{unique_id}'
+                    exercise = exercise_form.save(commit=False)
+                    exercise.save()
+                    routine.exercises.add(exercise)
+                    # unique_id += 1
             return HttpResponseRedirect('/add_routine?submitted=True')
+        
     else:
         routine_form = RoutineForm()
-        exercise_formset = ExerciseFormSet(prefix='exercise')
-        # if 'submitted' in request.GET:
-            # submitted = True
-    return render(request, 'habit_tracker/add_routine.html',  {'routine_form': routine_form, 'exercise_formset': exercise_formset, 'submitted': submitted})
+        exercise_formset = ExerciseFormSet(queryset=Exercise.objects.none(),)# prefix='exercise')
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'habit_tracker/add_routine.html', {
+        'routine_form': routine_form, 
+        'exercise_formset': exercise_formset, 
+        'submitted': submitted,
+        'stripeOptions': textContent.get('stripeOptions', []),
+        })
 
 
 def editroutines(request):
     routine_list = Routine.objects.all()
     return render(request, 'habit_tracker/editroutines.html', {'routine_list': routine_list})
 
-# @csrf_exempt  # Disable CSRF protection for this example (not recommended for production)
-# def save_data(request):
-#     if request.method == 'POST':
-#         data = json.loads(request.body)
-#         name = data.get('name')
-#         time = data.get('time')
-        
-#         # Create and save a new Routine object
-#         new_routine = Routine(name=name, time=time)
-#         new_routine.save()
 
-#         return JsonResponse({'success': True})
-#     else:
-#         return JsonResponse({'success': False, 'error': 'Invalid request method'})
+def choose_routine(request):
+    routine_list = Routine.objects.all()
+    return render(request, 'habit_tracker/choose_routine.html', {'routine_list': routine_list})

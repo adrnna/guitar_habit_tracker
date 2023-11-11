@@ -15,7 +15,7 @@
                         {% for exercise in routine.exercises.all %}
                             <div class="exercise-info">
                                 <p>Name: {{ exercise.exercise_name }}</p>
-                                <p>Time: {{ exercise.time }} </p>
+                                <p>Time: {{ exercise.time }} min</p>
                                 <p>Description: {{ exercise.description }}</p>
                                 <p>Link: <a href="{{ exercise.link }}">{{ exercise.link }}</a><br/></p>
                             </div>

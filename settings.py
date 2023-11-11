@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,16 +79,21 @@ WSGI_APPLICATION = 'guitar_habit_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'routines',  # Replace with your database name
-        'USER': 'adrnna',       # Replace with your PostgreSQL username
-        'PASSWORD': '',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',      # Replace with the database host (usually 'localhost')
-        'PORT': '',               # Leave empty for default PostgreSQL port (5432)
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'routines',  # Replace with your database name
+#         'USER': 'adrnna',       # Replace with your PostgreSQL username
+#         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', ''),  # Replace with your PostgreSQL password
+#         'HOST': 'localhost',      # Replace with the database host (usually 'localhost')
+#         'PORT': '',               # Leave empty for default PostgreSQL port (5432)
+#     }
+# }
+
+with open('config.json') as config_file:
+    config = json.load(config_file)
+
+DATABASES = config['DATABASES']    
 
 
 # Password validation

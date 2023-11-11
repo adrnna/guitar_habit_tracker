@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <img src="{% static 'logo.png' %}" alt="Logo">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
         <ul class="top-links">
             <li><a href="#">{{ textContent.aboutMe }}</a></li>
             <li><a href="#">{{ textContent.contact }}</a></li>
@@ -56,7 +56,7 @@
                     <span  class="sidebar-text">{{ textContent.startNewSession }}</span> 
                 </button>
                 <div id="rolloutOptions">
-                    <button class="btn btn-sidebar rollout-options sidebar-text">{{ textContent.chooseYourRoutine }}</button>
+                    <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'choose_routine' %}"> {{ textContent.chooseYourRoutine }}</a>
                     <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'justjam' %}">{{ textContent.justJam }}</a>
                 </div>
             </div>

@@ -8,3 +8,5 @@ myenv/
 backup/
 node-backend/
 pythonanywhere/
+config.json
+react_app/

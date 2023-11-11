@@ -41,45 +41,84 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     if (overlayContainer) {
-        // Attach event listener for dropdown button clicks
-        overlayContainer.addEventListener("click", function(event) {
-            const dropdownButton = event.target.closest('.dropdown-button');
-            if (dropdownButton) {
-                handleDropdownButtonClick(event, dropdownButton);
-            }
-        });
+        // // Attach event listener for dropdown button clicks
+        // overlayContainer.addEventListener("click", function(event) {
+        //     const dropdownButton = event.target.closest('.dropdown-button');
+        //     if (dropdownButton) {
+        //         handleDropdownButtonClick(event, dropdownButton);
+        //     }
+        // });
 
-        // Attach event listener for dropdown option clicks
-        overlayContainer.addEventListener("click", function(event) {
-            if (event.target.classList.contains('dropdown-item')) {
-                handleDropdownOptionClick(event);
-            }
-        });
+        // // Attach event listener for dropdown option clicks
+        // overlayContainer.addEventListener("click", function(event) {
+        //     if (event.target.classList.contains('dropdown-item')) {
+        //         handleDropdownOptionClick(event);
+        //     }
+        // });
 
+        //Attach event listener for adding and removing stripes
         overlayContainer.addEventListener("click", function(event) {
             const target = event.target;
             const parent = target.parentElement;
             
-            if (parent) {
-                if (parent.classList.contains("btn-add-stripe")) {
-                    const originalStripe = target.closest('.stripe-container');
-                    const originalStripeClass = originalStripe.classList[1];
-                    const clonedStripe = originalStripe.cloneNode(true);
-                    const newStripeNumber = overlayContainer.querySelectorAll('.stripe-container').length + 1;
+        //     if (parent) {
+        //         if (parent.classList.contains("btn-add-stripe")) {
+        //             const originalStripe = target.closest('.stripe-container');
+        //             const originalStripeClass = originalStripe.classList[1];
+        //             const clonedStripe = originalStripe.cloneNode(true);   
+        //             const newStripeNumber = overlayContainer.querySelectorAll('.stripe-container').length + 1;
 
-                    clonedStripe.classList.remove(originalStripeClass);
-                    clonedStripe.classList.add(`stripe-${newStripeNumber}`);
+        //             clonedStripe.classList.remove(originalStripeClass);
+        //             clonedStripe.classList.add(`stripe-${newStripeNumber}`);
+                    
+        //             extraInput.value = parseInt(extraInput.value) + 1;
 
-                    const originalDropdown = originalStripe.querySelector('.dropdown-item');
-                    const selectedOptionIndex = originalDropdown.getAttribute('data-value');
+                    // //add unique ids to time buttons
+                    // const btnTimeGroup = clonedStripe.querySelector('.btn-time-group')
+                    // const timeInputs = btnTimeGroup.querySelectorAll('input[type="radio"]');
+                    // const timeLabels = btnTimeGroup.querySelectorAll('label');
+                    // timeInputs.forEach((input, index) => {
+                    //     input.id = `time${newStripeNumber}.${index + 1}`;
+                    //     input.name = `"selected_time_group_${newStripeNumber}`;
+                    //     timeLabels[index].setAttribute('for', input.id);
+                    // });           
 
-                    originalStripe.insertAdjacentElement('afterend', clonedStripe);
-                } else if (parent.classList.contains("btn-remove-stripe")) {
-                    const stripeToRemove = target.closest('.stripe-container');
-                    overlayContainer.removeChild(stripeToRemove);
-                }
+        //             const originalDropdown = originalStripe.querySelector('.dropdown-item');
+        //             const selectedOptionIndex = originalDropdown.getAttribute('data-value');
+
+        //             // insert right after the clicked stripe
+        //             originalStripe.insertAdjacentElement('afterend', clonedStripe);
+        //         } 
+        //         else if (parent.classList.contains("btn-remove-stripe")) {
+        //             const stripeToRemove = target.closest('.stripe-container');
+        //             overlayContainer.removeChild(stripeToRemove);
+        //             extraInput.value = parseInt(extraInput.value) - 1;
+        //         }
+        //     }
+        });
+    
+
+        
+
+        overlayContainer.addEventListener("click", function(event) {
+            let exerciseForms = document.querySelectorAll(".exercise_form")
+            let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+            let formNum = exerciseForms.length-1
+            let addFormButton = event.target.closest('.btn-add-stripe');
+            let removeFormButton = event.target.closest('.btn-remove-stripe');
+            let exerciseForm = event.target.closest(".exercise_form");
+            // const inputField = exerciseForm.querySelector("#exercise_name_");
+            // console.log(inputField.value)
+            // let originalStripe = event.target.closest('.stripe-container');
+
+            if (addFormButton) {
+                addForm(exerciseForm, formNum, totalForms);
+            }
+            else if (removeFormButton) {
+                removeForm(exerciseForm,);
             }
         });
+
 
         // Attach event listener for collapsible button
         overlayContainer.addEventListener("click", function(event) {
@@ -98,37 +137,63 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
         });
-    }
 
-    // Function to handle dropdown button click
-    function handleDropdownButtonClick(event) {
-        const dropdownButton = event.target;
-        const dropdownList = dropdownButton.nextElementSibling;
-        if (dropdownList === activeDropdown) {
-            activeDropdown.style.display = 'none';
-            activeDropdown = null;
-        } else {
-            if (activeDropdown) {
-                activeDropdown.style.display = 'none';
+        document.addEventListener("click", function(event) {
+            const activeInputBox = document.querySelector(".input-box.active"); 
+            if (activeInputBox) {
+                if (event.target !== activeInputBox) {
+                    activeInputBox.classList.remove("active"); 
+                }
             }
-            dropdownList.style.display = 'block';
-            activeDropdown = dropdownList;
-        }
+        });
+
+
+        overlayContainer.addEventListener("keydown", function(event) {
+            const target = event.target;
+    
+            // Check if the pressed key is "Enter"
+            if ((event.key === "Enter" || event.keyCode === 13) && target.classList.contains("input-box") && target.classList.contains("name")){
+                // Find the corresponding button element within the same stripe
+                const stripe = target.closest(".stripe-container");
+                // const button = stripe.querySelector(".btn-confirm");
+                const button = target.nextElementSibling;
+                if (button && button.classList.contains("btn-confirm")) {
+                    // Simulate a click on the button
+                    toggleInput(button);
+                }
+            }
+        });        
     }
 
-    // Function to handle option selection in dropdown list
-    function handleDropdownOptionClick(event) {
-        const dropdownItem = event.target
-        const selectedValue = dropdownItem.dataset.value;
-        if (selectedValue) {
-            const dropdownList = dropdownItem.parentElement
-            const customDropdown = dropdownItem.closest('.custom-dropdown')
-            const dropdownButton = customDropdown.querySelector('.dropdown-button');
-            dropdownButton.textContent = selectedValue;
-            dropdownList.style.display = 'none';
-            activeDropdown = null;
-        }
-    }
+    // // Function to handle dropdown button click
+    // function handleDropdownButtonClick(event) {
+    //     const dropdownButton = event.target;
+    //     const dropdownList = dropdownButton.nextElementSibling;
+    //     if (dropdownList === activeDropdown) {
+    //         activeDropdown.style.display = 'none';
+    //         activeDropdown = null;
+    //     } else {
+    //         if (activeDropdown) {
+    //             activeDropdown.style.display = 'none';
+    //         }
+    //         dropdownList.style.display = 'block';
+    //         activeDropdown = dropdownList;
+    //     }
+    // }
+
+    // // Function to handle option selection in dropdown list
+    // function handleDropdownOptionClick(event) {
+    //     const dropdownItem = event.target
+    //     const selectedValue = dropdownItem.dataset.value;
+    //     if (selectedValue) {
+    //         const dropdownList = dropdownItem.parentElement
+    //         const customDropdown = dropdownItem.closest('.custom-dropdown')
+    //         const dropdownButton = customDropdown.querySelector('.dropdown-button');
+    //         dropdownButton.textContent = selectedValue;
+    //         dropdownList.style.display = 'none';
+    //         activeDropdown = null;
+    //     }
+    // }
 
     // Function to handle collapsible button click
     function handleCollapsibleButtonClick(collapsibleButton) {
@@ -159,5 +224,79 @@ document.addEventListener("DOMContentLoaded", function() {
             sidebar.width = null;
         }
     }
+
+    function addForm(exerciseForm, formNum, totalForms){
+        // clone the clicked on form
+        let newForm = exerciseForm.cloneNode(true)
+        // find the highest stripe number and assign a unique number
+        assignStripeNumber(newForm)
+
+        // assign new form number, clone the user-input and insert the form into html
+        let formRegex = RegExp(`form-(\\d){1}-`,'g')
+        formNum++
+
+        let origInputBox = newForm.querySelector(".input-box.name")
+        let origBtnTimeGroup = newForm.querySelector(".btn-time-group")
+        let selectedBtn = origBtnTimeGroup.querySelector('input[type="radio"]:checked')
+        let selectedBtnId = null;
+        if (selectedBtn) {
+            selectedBtnId = selectedBtn.id
+        }
+        
+        // this step erases the content of the form:
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+
+        let newInputBox = newForm.querySelector(".input-box.name")
+        if (selectedBtn) {
+            let newBtnTimeGroup = newForm.querySelector(".btn-time-group")
+            let newSelectedBtn = newBtnTimeGroup.querySelector(`#${selectedBtnId}`)
+            newSelectedBtn.checked = true;
+        }
+
+        newInputBox.value = origInputBox.value
+
+        exerciseForm.insertAdjacentElement('afterend', newForm);    
+        totalForms.setAttribute('value', `${formNum+1}`)
+    }
+
+    function removeForm(exerciseForm,){
+        exerciseForm.remove();
+    }
+
+    function assignStripeNumber(newForm){
+        let stripeNumbering = document.querySelectorAll(".stripe-container")
+        let stripeNumbers = Array.from(stripeNumbering).map(element => {
+            return element.className.match(/stripe-(\d+)/)[1];
+        });
+        let numericNumbers = stripeNumbers.map(Number);
+        let highestNumber = Math.max(...numericNumbers);
+        newStripeNumber = highestNumber + 1
+        
+        // assign the correct stripe number
+        let currentStripe = newForm.querySelector('.stripe-container');
+        let currentClassName = currentStripe.className;
+        currentStripe.className = currentClassName.replace(/stripe-\d+/, `stripe-${newStripeNumber}`);
+
+        // assign the correct id to exercise name input
+        let exerciseNameBox = currentStripe.querySelector(".input-box.name")
+        let exerciseNameId = exerciseNameBox.id
+        exerciseNameBox.id = exerciseNameId.replace(/exercise_name_form-\d+\b/g, `exercise_name_form-${newStripeNumber}`);
+
+        // assign correct value input 
+        let exerciseName = exerciseNameBox.value
+
+        //add unique ids to time buttons
+        const btnTimeGroup = currentStripe.querySelector('.btn-time-group')
+        const timeInputs = btnTimeGroup.querySelectorAll('input[type="radio"]');
+        const timeLabels = btnTimeGroup.querySelectorAll('label');
+        timeInputs.forEach((input, index) => {
+            input.id = `id_form-${newStripeNumber-1}-time_${index + 1}`;
+            input.name = `"form-${newStripeNumber-1}-time`;
+            timeLabels[index].setAttribute('for', input.id);
+        });    
+    }
+
+    
+
     
 });

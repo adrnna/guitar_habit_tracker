@@ -23,9 +23,11 @@ textContent = {
     "inputRoutineNamePlaceholder": "Enter routine name",
     "inputPlaceholder": "Enter name",
     "stripeOptions": ["WARM-UP", "EXERCISE", "ARPEGGIO", "SONG"],
-    "timeValues": ["5 min", "10 min", "15 min", "20 min", "30 min", "45 min", "1h"],
+    # "timeValues": ["5 min", "10 min", "15 min", "20 min", "30 min", "45 min", "1h"],
+    "timeUnit": "min",
     "addLink": "Add a link:",
     "addDescription": "Add a description",
+    "saveButton": "SAVE",
 
     "sidebarFooterSignature": "adrnna 2023"
 }

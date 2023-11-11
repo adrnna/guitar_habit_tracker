@@ -61,14 +61,39 @@ html,body {
     overflow-x: hidden; 
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* reset the appearance of select elements */
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+  }
 
 
 
 
 
 
+
+/* set up css variables */
 :root {
     --top-bar-height: 50px; /* Define the top bar height here */
+    --select-border: #000000;
+    --select-focus: rgb(205, 41, 230);
+    --select-arrow: var(--select-border);
+    --font-size: 17px;
 }
 
 .top-bar {
@@ -81,7 +106,7 @@ html,body {
     background-color: #333;
     color: white;
     box-shadow: 0px 2px 5px rgba(157, 11, 11, 0.716);
-    font-size: 15px;
+    font-size: var(--font-size);
 }
 
 .top-bar img {
@@ -123,9 +148,9 @@ html,body {
 }
 
 .sidebar.active {
-    width: 260px;
-    min-width: 260px;
-    max-width: 260px; 
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px; 
     padding: 0px 15px;
 }
 
@@ -133,7 +158,7 @@ html,body {
     position: relative;
     display: flex;
     color: white;
-    font-size: 15px;
+    font-size: var(--font-size);
     align-items: center;
     margin-top: 10px;
     padding: 10px 0px 10px 20px;
@@ -150,7 +175,7 @@ html,body {
     position: absolute;
     bottom: 0;
     left: 15px;
-    font-size: 12px;
+    font-size: 15px;
     color: #999;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -168,7 +193,7 @@ html,body {
     border-radius: 10px;
     color: inherit;
     text-decoration: none;
-    font-size: 15px;
+    font-size: var(--font-size);
     font-weight: bold; 
     font-family: inherit;
     margin-top: 5px;
@@ -177,10 +202,6 @@ html,body {
 .sidebar-text {
     margin-left: 10px;
 }
-
-/* .sidebar  {
-    display: none;
-} */
 
 .btn-sidebar.rollout-options {
     background-color: #cdd3ccb9;
@@ -256,7 +277,7 @@ html,body {
 
 .motivation-text{
     padding: 10px;
-    font-size: 15px;
+    font-size: var(--font-size);
 
 }
 
@@ -277,16 +298,20 @@ html,body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .btn-save {
-    padding: 5px;
+    font-family: inherit;
+    padding: 5px 20px;
     border: 0.2px solid black;
+    border-radius: 5px;
+
 }
 
 .btn-save:hover{
-    background-color: rgba(149, 195, 179, 0.911);
+    background-color:  #ff5420;
 }
 
 .btn-user a {
@@ -304,11 +329,12 @@ html,body {
     transition: background-color 0.3s ease;
     border: 0.8px solid #066967f9;
     border-radius: 5px;
-    margin-right: 3px;
+    margin-right: 5px;
     align-items: center;
     white-space: nowrap;
-    font-size: 15px;
+    font-size: var(--font-size);
     font-family: inherit;
+    cursor: pointer;
 }
 
 .btn-time-group {
@@ -318,12 +344,39 @@ html,body {
     padding: 15px;
 }
 
+label.btn.btn-time  {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-number {
+    font-size: 22px;
+    /* font-weight: bold;  */
+}
+
+.unit {
+    font-size: 12px; 
+    /* font-weight: bold;  */
+}
+
+input[type="radio"] {
+    position: relative;
+    height: 4px;
+    margin-right: -15px;
+    opacity: 0;
+}
+
+input[type="radio"]:checked + label {
+    background-color:  #ff5420;
+    font-weight: bold;
+}
+
 .btn-time:hover {
     background-color: rgb(255, 151, 91);
 }
 
-.btn-time.selected {
-    background-color:  #ff5420;
+select.decorated option:hover {
+    box-shadow: 0 0 10px 100px #8e18a8 inset;
 }
 
 .btn-confirm {
@@ -350,6 +403,13 @@ html,body {
     justify-content: flex-start;
     margin-left: 0px;
     padding: 0px;
+}
+
+.routine-name {
+    /* display: grid; */
+    padding: 10px 0;
+    justify-content: center;
+    /* align-items: baseline; */
 }
 
 .collapsible-input-container {
@@ -401,7 +461,7 @@ textarea{
     border: none;
     border-bottom: 1px solid #000; 
     outline: none;
-    font-size: 15px;
+    font-size: var(--font-size);
     font-family: inherit;
 }
 
@@ -430,61 +490,78 @@ textarea{
     color: #c01b1bd6;
 }
 
-
 .input-box.valid-name{
     border: none;
 }
 
-.custom-dropdown {
-    position: relative;
-    display: inline-block;
+.select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    padding: 0 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: var(--font-size);
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: inherit;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
     margin-left: 10px;  
-    margin-right: 20px; 
+    margin-right: 30px; 
+}
+
+select,
+.select:after {
+    grid-area: select;
+}
+
+.select:after {
+    content: "";
+    width: 0.6em;
+    height: 0.4em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    justify-self: end;
 }
 
 .dropdown-button {
-    text-align: center;
-    font-weight: bold;
-    font-family: inherit;
-    font-size: 15px;
+    
     padding: 0 10px;
     border: none;
     width: 130px;
-    background-color: inherit;
     cursor: pointer;
+    background-color: inherit;
 }
 
-.dropdown-button:hover {   
-    background-color: #ff5420;
+form select:hover {
+    background-color: rgb(255, 151, 91);
+    font-weight: 700;
 }
 
-.dropdown-list {
+/* .dropdown-list {
     position: absolute;
     z-index: 2;
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: #fff;
     border: 1px solid #ccc;
     display: none;
     top: 100%;
     left: 0;
     width: 128px;
     overflow:visible;
-}
-
+} */
 
 .dropdown-item {
     position: relative;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
-    /* z-index: 2; */
-}
-
-.dropdown-item:hover {
-    background-color: #ff5420;
+    background-color: #ffffff;
+    text-align: center;
 }
 
 .collapsible{
@@ -521,7 +598,7 @@ textarea{
 
 .material-symbols-outlined.navbar.active{
     transform: rotate(180deg);
-    left: 260px;
+    left: 250px;
     z-index: 2;
 }
 
@@ -638,13 +715,13 @@ textarea{
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
-    padding: 0 0px 0 0px;   
+    padding: 0 15px ;   
     /* z-index: 1; */
     overflow:visible;
 }
 
 .overlay-text {
-    font-size: 15px;
+    font-size: var(--font-size);
     color: black;
     padding: 20px;
     width: auto;
@@ -735,7 +812,7 @@ textarea{
     display: block;
     text-align: left;
     font-weight: bold;
-    font-size: 15px; 
+    font-size: var(--font-size);
     color: rgba(247, 154, 41, 0.966); 
     padding: 10px;
 }
@@ -748,7 +825,7 @@ textarea{
     text-align: left;
     color: blue; 
     text-decoration: underline;
-    font-size: 12px; 
+    font-size: var(--font-size);
 }
 
 .routine {
@@ -763,4 +840,8 @@ textarea{
     background: none; 
     float: right;
     margin-right: 100px; 
+}
+
+.top-bar .logo-image {
+    width: 80px;
 }
