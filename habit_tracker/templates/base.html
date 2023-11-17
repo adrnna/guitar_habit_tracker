@@ -35,55 +35,58 @@
             {% endif %}
         </div>
     </div>
-    <div class="container">
-        <div class="toggle-sidebar-button">
-            <button class="btn-collapsible">
-                <span class="material-symbols-outlined navbar">arrow_right</span>
-            </button>
-        </div>
-        <div class="sidebar">
-            <div class="sidebar-top">
-                <span class="material-symbols-outlined">music_note</span>
-                <span class="sidebar-text">{{ user.username }}</span> 
-            </div>
-            <a class="btn btn-sidebar" href="{% url 'home' %}">
-                <span class="material-symbols-outlined">home</span>
-                <span class="sidebar-text">{{ textContent.home }}</span>
-            </a>
-            <div id="newSession">
-                <button id="rolloutOptionsButton" class="btn btn-sidebar rollout-options-button">
-                    <span class="material-symbols-outlined">piano</span>
-                    <span  class="sidebar-text">{{ textContent.startNewSession }}</span> 
+    <div class="background-container">
+        <div class="container">
+            <div class="toggle-sidebar-button">
+                <button class="btn-collapsible">
+                    <span class="material-symbols-outlined navbar">arrow_right</span>
                 </button>
-                <div id="rolloutOptions">
-                    <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'choose_routine' %}"> {{ textContent.chooseYourRoutine }}</a>
-                    <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'justjam' %}">{{ textContent.justJam }}</a>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar-top">
+                    <span class="material-symbols-outlined">music_note</span>
+                    <span class="sidebar-text">{{ user.username }}</span> 
+                </div>
+                <a class="btn btn-sidebar" href="{% url 'home' %}">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="sidebar-text">{{ textContent.home }}</span>
+                </a>
+                <div id="newSession">
+                    <button id="rolloutOptionsButton" class="btn btn-sidebar rollout-options-button">
+                        <span class="material-symbols-outlined">piano</span>
+                        <span  class="sidebar-text">{{ textContent.startNewSession }}</span> 
+                    </button>
+                    <div id="rolloutOptions">
+                        <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'choose_routine' %}"> {{ textContent.chooseYourRoutine }}</a>
+                        <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'justjam' %}">{{ textContent.justJam }}</a>
+                    </div>
+                </div>
+                <div id="editRoutine">
+                    <button id="rolloutOptionsButton" class="btn btn-sidebar rollout-options-button">
+                        <span class="material-symbols-outlined">add</span>
+                        <span class="sidebar-text">{{ textContent.editYourRoutines }}</span> 
+                    </button>
+                    <div id="rolloutOptions">
+                        <!-- <button class="btn btn-sidebar rollout-options">{{ textContent.editYourRoutines }}</button> -->
+                        <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'editroutines' %}">{{ textContent.editYourRoutines }}</a>
+                        <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'add_routine' %}">{{ textContent.composeYourRoutine }}</a>
+                    </div>
+                </div>
+                <button id="oldSessionOptions" class="btn btn-sidebar">
+                    <span class="material-symbols-outlined">browse_gallery</span>
+                    <span class="sidebar-text">{{ textContent.browseOldSessions }}</span> 
+                </button>
+                <div class="sidebar-footer">
+                    <p>&copy; {{ textContent.sidebarFooterSignature }}</p>
                 </div>
             </div>
-            <div id="editRoutine">
-                <button id="rolloutOptionsButton" class="btn btn-sidebar rollout-options-button">
-                    <span class="material-symbols-outlined">add</span>
-                    <span class="sidebar-text">{{ textContent.editYourRoutines }}</span> 
-                </button>
-                <div id="rolloutOptions">
-                    <!-- <button class="btn btn-sidebar rollout-options">{{ textContent.editYourRoutines }}</button> -->
-                    <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'editroutines' %}">{{ textContent.editYourRoutines }}</a>
-                    <a class="btn btn-sidebar rollout-options sidebar-text" type=button href="{% url 'add_routine' %}">{{ textContent.composeYourRoutine }}</a>
+            
+                <div class="content">
+                    <h1 class="center-text">{{ textContent.titleCenterPage }}</h1>
+                    {% block content %}
+                    <!-- Specific page content will go here -->
+                    {% endblock %}
                 </div>
-            </div>
-            <button id="oldSessionOptions" class="btn btn-sidebar">
-                <span class="material-symbols-outlined">browse_gallery</span>
-                <span class="sidebar-text">{{ textContent.browseOldSessions }}</span> 
-            </button>
-            <div class="sidebar-footer">
-                <p>&copy; {{ textContent.sidebarFooterSignature }}</p>
-            </div>
-        </div>
-        <div class="content">
-            <h1 class="center-text">{{ textContent.titleCenterPage }}</h1>
-            {% block content %}
-            <!-- Specific page content will go here -->
-            {% endblock %}
         </div>
     </div>
     <script src="{% static 'timer.js' %}"></script>
