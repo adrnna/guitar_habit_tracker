@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.staticfiles import finders
 from django.http import HttpResponseRedirect
@@ -72,3 +72,15 @@ def editroutines(request):
 def choose_routine(request):
     routine_list = Routine.objects.all()
     return render(request, 'habit_tracker/choose_routine.html', {'routine_list': routine_list})
+
+
+def chosen_routine(request, routine_id):
+    routine = get_object_or_404(Routine, id=routine_id)
+    return render(request, 'habit_tracker/chosen_routine.html', {'routine': routine})
+
+
+def play_routine(request, routine_id):
+    routine = get_object_or_404(Routine, id=routine_id)
+    return render(request, 'habit_tracker/play_routine.html', {'routine': routine})
+
+

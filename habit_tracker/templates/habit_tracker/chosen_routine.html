@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="overlay-content">
+    <div id="overlayContainer" class="overlay-container active">
+        <div class="stripe-container database stripe-{{ forloop.counter }} ">
+            <div class="stripe-and-collapsible">
+                <div class="overlay-stripe routine" >
+                        <p class="routine_title">{{ routine.routine_name }}</p>
+                        <div class="routine-table-container">
+                            <table class="routine-table">
+                                <thead>
+                                    <tr>
+                                        <th>Exercise Name</th>
+                                        <th>Time (min)</th>
+                                        <th>Description</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for exercise in routine.exercises.all %}
+                                        <tr>
+                                            <td>{{ exercise.exercise_name }}</td>
+                                            <td>{{ exercise.time }}</td>
+                                            <td>{{ exercise.description }}</td>
+                                            <td><a href="{{ exercise.link }}">{{ exercise.link }}</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<div class="save-stripe">
+    <a class="btn btn-save" type=button href="{% url 'play_routine' routine.id %}" style="text-decoration: none; color: inherit; cursor: pointer;">{{ textContent.playYourRoutine }}</a>
+</div>
+
+{% endblock %}

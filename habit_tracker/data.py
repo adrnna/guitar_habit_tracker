@@ -13,6 +13,7 @@ textContent = {
     "chooseYourRoutine": "Choose Your Routine",
     "composeYourRoutine": "Compose a New Routine",
     "editYourRoutines": "Edit your Routines",
+    "playYourRoutine": "START ROUTINE",
     "justJam": "Just Jam",
     "browseOldSessions": "Browse Old Sessions",
 

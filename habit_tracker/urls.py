@@ -13,7 +13,8 @@ urlpatterns = [
     path('add_routine/', views.add_routine, name='add_routine'),
     path('editroutines/', views.editroutines, name='editroutines'),
     path('choose_routine/', views.choose_routine, name='choose_routine'),
-    # path('api/save_data/', save_data, name='save_data'),
+    path('chosen_routine/<int:routine_id>/', views.chosen_routine, name='chosen_routine'),
+    path('play_routine/<int:routine_id>/', views.play_routine, name='play_routine'),
 ]
 
 if settings.DEBUG:
