@@ -711,7 +711,7 @@ form select:hover {
     'FILL' 1,
     'wght' 350,
     'GRAD' 0,
-    'opsz' 40;
+    'opsz' 40;          
 }
 
 .btn-collapsible.active .material-symbols-outlined{
