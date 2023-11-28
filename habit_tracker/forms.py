@@ -40,7 +40,6 @@ class ExerciseForm(ModelForm):
             'class': 'input-box name',
             'type': 'text', 
             'onclick': 'changeColor(this)', 
-            # 'id': 'exercise_name_', 
             'placeholder': textContent['inputPlaceholder'],
             'required': 'required'
         })
@@ -72,18 +71,19 @@ class ExerciseForm(ModelForm):
             'type': 'text',
             'data-autoresize': 'true',
             'oninput': "addAutoResize(this)",
+            'onfocus': 'changeColor(this)',
             'rows': '2', 
             'placeholder': textContent['addDescription'],
         })
     )
-    link = forms.CharField(
+    link = forms.URLField(
         label='Link', 
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'input-box link', 
-            'type': 'url', 
-            'onclick': 'changeColor(this)', 
-            'placeholder': textContent['addLink'] 
+            # 'type': 'url', 
+            'placeholder': textContent['addLink'],
+            'onfocus': 'changeColor(this)', 
         })
     )
 

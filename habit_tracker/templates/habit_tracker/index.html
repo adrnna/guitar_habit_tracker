@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1 class="center-text">{{ textContent.titleCenterPage }}</h1>
 <div class="overlay-content">
     <p class="motivation-text">{{ textContent.motivation }}</p>
     <div id="overlayContainer" class="overlay-container">
         <div class="chart-canvas" style="height: 500px;">
             <canvas id="myChart" ></canvas>
-            <figcaption>Your performance</figcaption>
+            <!-- <figcaption>Your performance</figcaption> -->
         </div>
     </div>
 </div>

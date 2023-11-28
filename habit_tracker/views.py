@@ -36,20 +36,21 @@ def add_routine(request):
     if request.method == 'POST':
         routine_form = RoutineForm(request.POST)
         exercise_formset = ExerciseFormSet(request.POST, queryset=Exercise.objects.none(), )# initial=data)# prefix='exercise')
-        # unique_id = 0
         
         if routine_form.is_valid() and exercise_formset.is_valid():
             routine = routine_form.save()
             for i, exercise_form in enumerate(exercise_formset):
                 if exercise_form.is_valid():
-                    # exercise_form.unique_id = i
-                    # exercise_form.prefix = f'exercise-{unique_id}'
                     exercise = exercise_form.save(commit=False)
                     exercise.save()
                     routine.exercises.add(exercise)
-                    # unique_id += 1
+                else:
+                    print('HERE')
+                    print(exercise_form.errors)
             return HttpResponseRedirect('/add_routine?submitted=True')
-        
+        else:
+            print('OUTSIDE')
+            print(exercise_formset.errors)
     else:
         routine_form = RoutineForm()
         exercise_formset = ExerciseFormSet(queryset=Exercise.objects.none(),)# prefix='exercise')

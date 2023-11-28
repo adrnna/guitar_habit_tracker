@@ -250,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (selectedBtn) {
             let newBtnTimeGroup = newForm.querySelector(".btn-time-group")
             let newSelectedBtn = newBtnTimeGroup.querySelector(`#${selectedBtnId}`)
-            console.log(newSelectedBtn)
             newSelectedBtn.checked = true;
         }
 

@@ -7,12 +7,15 @@
     Your routine was submitted successfully!
 
 {% else %}
+<div class="title-text-container">
+    <div class="keyword text-box">{{ textContent.keywordAddRoutine}}</div>
+    <div class="text-box">{{ textContent.titleAddRoutine }}</div>
+    <div class="text-box">{{ textContent.newRoutineTitle }}</div>
+</div>
     <form action="" method="POST">
         {% csrf_token %}
         {{ exercise_formset.management_form }}
-        
         <div class="overlay-content">
-            <p>{{ textContent.newRoutineTitle }}</p>
             <div id="overlayContainer" class="overlay-container">
                 <p class="overlay-text">{{ textContent.newRoutineInstructions }}</p>
                 <div class="input-container routine-name">
@@ -83,15 +86,14 @@
                                             {{ exercise_form.description }}
                                                 <!-- <textarea data-autoresize rows="2" class="input-box description" oninput="addAutoResize()" type="text" id="inputValue" placeholder="{{ textContent.addDescription }}"></textarea> -->
                                                 <button type=button class="btn btn-confirm" onclick="toggleInput(this)">
-                                                        <span class="material-symbols-outlined">check</span>
+                                                    <span class="material-symbols-outlined">check</span>
                                                 </button>
                                         </div>
                                         <div class="collapsible-link">
                                             {{ exercise_form.link }} 
-                                            <!-- <input class="input-box link" type="url" id="link" name="link" placeholder="{{ textContent.addLink}}"> -->
-                                            <button type=button class="btn btn-confirm" onclick="toggleInput(this)"> 
-                                                <span class="material-symbols-outlined">check</span>
-                                            </button>
+                                                <button type=button class="btn btn-confirm" onclick="toggleInput(this)"> 
+                                                    <span class="material-symbols-outlined">check</span>
+                                                </button>
                                         </div>
                                     </div>
                                 </div>

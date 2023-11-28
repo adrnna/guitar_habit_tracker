@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     },
                 },
             },
-            responsive: true,
             maintainAspectRatio: false,
             // aspectRatio: 2,
             plugins: {

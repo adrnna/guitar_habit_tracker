@@ -65,7 +65,6 @@ html,body {
   box-sizing: border-box;
 }
 
-/* reset the appearance of select elements */
 select {
     appearance: none;
     background-color: transparent;
@@ -77,6 +76,7 @@ select {
     font-size: inherit;
     cursor: inherit;
     line-height: inherit;
+    color: inherit;
   }
 
 
@@ -91,7 +91,10 @@ select {
     --select-border: #000000;
     --select-focus: rgb(205, 41, 230);
     --select-arrow: var(--select-border);
-    --font-size: 18px;
+    --font-size: 19px;
+    --funky-font-color:rgb(0, 0, 0);
+    --dark-background-font:rgba(171, 171, 171, 0.918);
+
 }
 
 .top-bar {
@@ -139,8 +142,9 @@ select {
     min-height: calc(100vh - var(--top-bar-height));
     width: 0;
     /* background: linear-gradient(to bottom, #066967f9, #000a0af5); */
-    background: linear-gradient(to bottom, #22044bd6, #000a0af5);
-    box-shadow: 2px 0px 5px #066967f9;
+    /* background: linear-gradient(to bottom, #22044bd6, #000a0af5); */
+    background: linear-gradient(to bottom, #2f273bd6, #000a0af5);
+    box-shadow:  0px 0px 10px #ffc6ecd4;
     /* padding: 0px 15px; */
     overflow-y: auto;
     transition: width 0.3s ease;
@@ -337,9 +341,10 @@ select {
     /* background-color: #38c7db2b; */
     /* background-color: rgba(147, 147, 147, 0.921); */
     /* background: linear-gradient( 60deg, #ffffffcf 5%, #fff 10%, #dfd2f4d9 30%, #e0e0e0 50%, #97bbbeb0 70%, #4d6e6d 80%, #042a29f2 95% ); */
-    background: linear-gradient( 60deg, #ffffffd6 5%, #fffffff2 10%, #9ebeb9f7 30%, #e0e0e0e0 50%, #97bbbef2 70%, #4d6e6df2 80%, #042a29 95% );
+    /* background: linear-gradient( 60deg, #ffffffd6 5%, #fffffff2 10%, #9ebeb9f7 30%, #e0e0e0e0 50%, #97bbbef2 70%, #4d6e6df2 80%, #042a29 95% ); */
     /* background: linear-gradient( 60deg, #ffffffd6 5%, #fffffff2 10%, #c8a5d2f7 30%, #e0e0e0e0 50%, #9a94a6f2 70%, #c7c8cef2 80%, #15042a 95% ); */
     /* background: linear-gradient( 60deg, #ffffffc4 5%, #ffffffe8 10%, #e4dbfff7 30%, #f4f4f4f7 50%, #a097aee0 70%, #c7c8cef2 80%, #5e2142fc 95% ); */
+    background:rgb(29 29 35 / 98%);
     flex: 1; 
     padding: 0px 15px 0px;
     margin: 0;
@@ -352,18 +357,40 @@ select {
     min-height: calc(100vh - var(--top-bar-height));
 }
 
+.title-text-container{
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.text-box {
+    width: 30%; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    color: var(--dark-background-font);
+}
+
+.keyword {
+    font-size: 100px;
+    color: white;
+}
+
 .center-text {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     padding: 20px;
     margin-top: 20px;
+    color: var(--dark-background-font);
 }
 
 .motivation-text{
     padding: 10px;
     font-size: var(--font-size);
-
+    color: var(--dark-background-font);
 }
 
 .btn {
@@ -392,7 +419,9 @@ select {
     padding: 5px 20px;
     border: 0.2px solid black;
     border-radius: 5px;
-    background-color: rgb(241, 241, 241);
+    background-color: #f7f6f2c4;
+    /* background-color: rgb(255 255 255 / 38%); */
+    font-size: medium;
 }
 
 .btn-save:hover{
@@ -411,9 +440,9 @@ select {
     width: 35px;
     justify-content: flex-end;
     padding: 3px 3px;
-    background-color: #279f8c24;
+    background-color: #404d7969;
     transition: background-color 0.3s ease;
-    border: 0.8px solid #066967f9;
+    border: 0.8px solid #1f0f45f9;
     border-radius: 5px;
     align-items: center;
     white-space: nowrap;
@@ -443,7 +472,7 @@ label.btn.btn-time  {
 }
 
 .unit {
-    font-size: 12px; 
+    font-size: 15px; 
     /* font-weight: bold;  */
 }
 
@@ -457,10 +486,12 @@ input[type="radio"] {
 input[type="radio"]:checked + label {
     background-color:  #ff5420;
     font-weight: bold;
+    color: #000;
 }
 
 .btn-time:hover {
     background-color: rgb(255, 151, 91);
+    color: #000;
 }
 
 select.decorated option:hover {
@@ -554,11 +585,16 @@ textarea{
     background-color: inherit;
 }
 
+#routine_name.input-box.name {
+    color: var(--dark-background-font);
+    border-bottom: 1px solid #5c5e68;
+}
+
 .input-box.disabled {
     border-bottom: none;
 }
 .input-box.active {
-    background-color: #fff5ee;
+    background-color: #ff580d29;;
 }
 
 .input-box.empty {
@@ -588,6 +624,7 @@ textarea{
     max-width: 30ch;
     padding: 0 5px;
     font-weight: bold;
+    color: var(--funky-font-color);
     /* text-align: center; */
     font-size: var(--font-size);
     cursor: pointer;
@@ -702,6 +739,7 @@ form select:hover {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
+    color: #ff5420;
     /* vertical-align: baseline; */
     /* margin-right: 5px;  */
 }
@@ -726,7 +764,7 @@ form select:hover {
     visibility: hidden;
     opacity: 0;
     max-height: 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color:  rgb(49 49 85 / 91%);
     margin-top: 0px;
     transition: all 0.6s ease-out;
 }
@@ -785,8 +823,9 @@ form select:hover {
     /* grid-template-columns: 1fr; */
     max-width: 900px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.9); /* White with transparency */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color:  rgb(35 40 72 / 57%);
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    box-shadow: 0 0 10px #ffc6ecd4;
     transition: opacity 2s ease; /* Smooth fade-in/fade-out */
     margin-top: 20px;
     margin-bottom: 20px;
@@ -798,8 +837,10 @@ form select:hover {
     width: auto;
     /* max-width: 100%; */
     height: fit-content; 
-    background: linear-gradient(to bottom,  #ffffff, 70%, #dce6e5b7 );
-    border: 1px solid #71353542;
+    /* background: linear-gradient(to bottom,  #ffffff, 70%, #dce6e5b7 ); */
+    background: linear-gradient(to bottom, #c4cbffd9, 70%, #9683b5b7 );
+    border-radius: 8px;
+    border: 1px solid #777;
     display: grid;
     /* margin: 0 auto; */
     /* grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); */
@@ -811,6 +852,7 @@ form select:hover {
     align-items: baseline;
     padding: 0 10px ;   
     overflow:visible;
+    color: var(--funky-font-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -822,7 +864,7 @@ form select:hover {
 
 .overlay-text {
     font-size: var(--font-size);
-    color: black;
+    color: var(--dark-background-font);
     padding: 20px;
     width: auto;
     text-align: center;
@@ -849,13 +891,14 @@ form select:hover {
 } */
 
 .stripe-and-collapsible{
-    background-color: rgb(226, 226, 232);
+    background-color: inherit;
     /* max-width: min-content; */
     width: auto;
     display: grid;
     box-shadow: 2px 0px 5px #9a9a9ad2;
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 8px;
 }
 
 .stripe-and-collapsible:hover {
