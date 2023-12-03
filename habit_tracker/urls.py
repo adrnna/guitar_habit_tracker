@@ -15,6 +15,7 @@ urlpatterns = [
     path('choose_routine/', views.choose_routine, name='choose_routine'),
     path('chosen_routine/<int:routine_id>/', views.chosen_routine, name='chosen_routine'),
     path('play_routine/<int:routine_id>/', views.play_routine, name='play_routine'),
+    path('test/', include('frontend.urls')),
 ]
 
 if settings.DEBUG:

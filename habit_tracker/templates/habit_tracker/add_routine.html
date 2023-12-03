@@ -118,62 +118,6 @@
     </form>
 {% endif %}
 
-
-<script>
-
-    function addAutoResize() {
-        document.querySelectorAll('[data-autoresize]').forEach(function (element) {
-            element.style.boxSizing = 'border-box';
-            var offset = element.offsetHeight - element.clientHeight;
-            element.addEventListener('input', function (event) {
-                event.target.style.height = 'auto';
-                event.target.style.height = event.target.scrollHeight + offset + 'px';
-
-                // Find and expand the parent stripe
-                var stripe = event.target.closest('.collapsible-content');
-                if (stripe) {
-                    stripe.style.height = 'auto';
-                    stripe.style.height = stripe.scrollHeight + 'px';
-                }
-            });
-            element.removeAttribute('data-autoresize');
-        });
-    }
-
-    function changeColor(inputBox) {
-        inputBox.classList.add("active");
-    }
-
-
-    function toggleInput(button) {
-        const inputBox = button.parentElement.querySelector(".input-box");
-        if (inputBox.value.trim() == "") {
-            inputBox.classList.add("empty")
-            inputBox.classList.add("disappear")
-            setTimeout(function() {
-                inputBox.classList.remove("empty");
-                inputBox.classList.remove("disappear");
-            }, 3000);
-        }else{
-            if (inputBox.disabled) {
-                inputBox.classList.remove("active");
-                inputBox.disabled = false;
-                button.classList.remove("disabled");
-                inputBox.classList.remove("valid-name");
-                button.innerHTML = '<span class="material-symbols-outlined">done</span>';
-            }else{
-                inputBox.disabled = true;
-                inputBox.classList.remove("active");
-                button.classList.add("disabled");
-                inputBox.classList.add("valid-name")
-                inputBox.classList.remove("empty")
-                button.innerHTML = '<span class="material-symbols-outlined">edit</span>';
-            }
-        }
-    }
-
-   
-</script>
 <img src="{% static 'images/guitar_pic.png' %}" alt="Guitar image" class="guitar-image">
 
 {% endblock %}

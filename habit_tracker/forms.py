@@ -20,16 +20,7 @@ class CustomUserCreationForm(UserCreationForm):
         return user
     
 
-
 class ExerciseForm(ModelForm):
-    # def __init__(self, *args,**kwargs):
-    #     super(ExerciseForm, self).__init__(*args, **kwargs)
-    #     # Generate a unique ID based on the form's index
-    #     form_index = self.prefix or 0
-    #     self.fields['exercise_name'].widget.attrs.update({
-    #         'id': f'exercise_name_{form_index}'
-    #     })
-
     class Meta:
         model = Exercise
         fields = ('exercise_name', 'time', 'description', 'link')
@@ -44,7 +35,6 @@ class ExerciseForm(ModelForm):
             'required': 'required'
         })
     )
-
 
     TIME_CHOICES = [
     ("5", "5"),

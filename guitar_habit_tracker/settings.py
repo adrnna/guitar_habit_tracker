@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'habit_tracker',
-    "debug_toolbar",
+    'debug_toolbar',
+    'frontend.apps.FrontendConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'guitar_habit_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'habit_tracker/templates', 'reactapp/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'habit_tracker/templates', )],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,8 +143,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # STATIC_ROOT = BASE_DIR / 'staticfiles' 
-
-# STATICFILES_DIRS =  [os.path.join(BASE_DIR, 'reactapp/build/static')],
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

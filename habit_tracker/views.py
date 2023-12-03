@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.staticfiles import finders
 from django.http import HttpResponseRedirect
-from .forms import CustomUserCreationForm
 from .models import PracticeLog, Routine, Exercise
-from .forms import RoutineForm, modelformset_factory, ExerciseForm, ExerciseFormSet
-from django.forms import formset_factory
+from .forms import CustomUserCreationForm
+from .forms import RoutineForm, ExerciseFormSet
 from .data import textContent
 # from django.views.decorators.csrf import csrf_exempt
 
