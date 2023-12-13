@@ -1,4 +1,4 @@
-from .data import textContent
+from frontend.data import textContent
 
 def text_content(request):
     return {'textContent': textContent}

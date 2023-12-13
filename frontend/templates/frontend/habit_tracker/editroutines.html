@@ -17,6 +17,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Exercise Name</th>
+                                                <th>Type</th>
                                                 <th>Time (min)</th>
                                                 <th>Description</th>
                                                 <th>Link</th>
@@ -26,6 +27,7 @@
                                             {% for exercise in routine.exercises.all %}
                                                 <tr>
                                                     <td>{{ exercise.exercise_name }}</td>
+                                                    <td>{{ exercise.exercise_type}}</td>
                                                     <td>{{ exercise.time }}</td>
                                                     <td>{{ exercise.description }}</td>
                                                     <td><a href="{{ exercise.link }}">{{ exercise.link }}</a></td>

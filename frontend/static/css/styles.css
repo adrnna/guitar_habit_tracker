@@ -77,6 +77,7 @@ select {
     cursor: inherit;
     line-height: inherit;
     color: inherit;
+    text-align: center;
   }
 
 
@@ -104,7 +105,7 @@ select {
     height: var(--top-bar-height);
     overflow: hidden;
     align-items: center;
-    background-color: #333;
+    background-color: #373737;
     color: white;
     box-shadow: 0px 2px 5px rgba(157, 11, 11, 0.716);
     font-size: var(--font-size);
@@ -625,7 +626,7 @@ textarea{
     padding: 0 5px;
     font-weight: bold;
     color: var(--funky-font-color);
-    /* text-align: center; */
+    text-align: center;
     font-size: var(--font-size);
     cursor: pointer;
     line-height: 1.1;
@@ -661,7 +662,7 @@ select,
 }
 
 form select:hover {
-    background-color: rgb(255, 151, 91);
+    /* background-color: rgb(255, 151, 91); */
     font-weight: 700;
 }
 
@@ -739,12 +740,13 @@ form select:hover {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    color: #ff5420;
+    color: #000000;
     /* vertical-align: baseline; */
     /* margin-right: 5px;  */
 }
 
 .collapsible .material-symbols-outlined:hover{
+    color: #180c73;
     font-variation-settings:
     'FILL' 1,
     'wght' 350,
@@ -823,7 +825,7 @@ form select:hover {
     /* grid-template-columns: 1fr; */
     max-width: 900px;
     margin: 0 auto;
-    background-color:  rgb(35 40 72 / 57%);
+    background-color:  rgb(35 40 72 / 42%);
     /* background-color: rgba(255, 255, 255, 0.9); */
     box-shadow: 0 0 10px #ffc6ecd4;
     transition: opacity 2s ease; /* Smooth fade-in/fade-out */
@@ -868,6 +870,16 @@ form select:hover {
     padding: 20px;
     width: auto;
     text-align: center;
+}
+
+.exercise_form {
+    display: flex; 
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.form-number {
+    color: var(--dark-background-font);
 }
 
 .stripe-container {

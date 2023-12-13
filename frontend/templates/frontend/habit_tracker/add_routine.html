@@ -27,11 +27,15 @@
                 </div>
                 {% for exercise_form in exercise_formset %}
                     <div class="exercise_form">
+                        <div class="form-number">
+                            BLA
+                        </div>
                         <div class="stripe-container stripe-{{ forloop.counter }}">
                             <div class="stripe-and-collapsible">
                                 <div class="overlay-stripe">
                                         <div class="select">
-                                            <label for="selectOption{{ forloop.counter }}"></label>
+                                            {{ exercise_form.exercise_type }}
+                                            <!-- <label for="selectOption{{ forloop.counter }}"></label>
                                             <select id="selectOption{{ forloop.counter }}" name="selectOption{{ forloop.counter }}" >
                                                 {% for option in stripeOptions %}
                                                     {% if forloop.counter == forloop.parentloop.counter %}
@@ -39,7 +43,7 @@
                                                     {% else %}
                                                         <option value="{{ option }}" class="dropdown-item">{{ option }}</option>
                                                     {% endif %}
-                                                {% endfor %}
+                                                {% endfor %} -->
                                             </select>
                                         </div>
 

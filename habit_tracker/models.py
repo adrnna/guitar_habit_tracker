@@ -11,11 +11,10 @@ class Exercise(models.Model):
     # unit_type = models.Choices('1', '2', '3', '4')
     # routine = models.ForeignKey(Routine, on_delete=models.CASCADE) 
     exercise_name = models.CharField(max_length = 200)
-    # time = models.PositiveIntegerField()
     time = models.CharField(max_length=10, blank=False, null=False, default="5 min")
-    # time = models.IntegerField(null=True, blank=True, default=0)
     description = models.TextField(blank = True)
     link = models.URLField(blank = True)
+    exercise_type = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.exercise_name

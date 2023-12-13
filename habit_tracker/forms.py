@@ -3,7 +3,7 @@ from django.forms import ModelForm, modelformset_factory
 from .models import Routine, Exercise
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .data import textContent
+from frontend.data import textContent
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -23,7 +23,7 @@ class CustomUserCreationForm(UserCreationForm):
 class ExerciseForm(ModelForm):
     class Meta:
         model = Exercise
-        fields = ('exercise_name', 'time', 'description', 'link')
+        fields = ('exercise_name', 'time', 'description', 'link', 'exercise_type')
 
     exercise_name = forms.CharField(
         label='Exercise Name', 
@@ -66,6 +66,7 @@ class ExerciseForm(ModelForm):
             'placeholder': textContent['addDescription'],
         })
     )
+
     link = forms.URLField(
         label='Link', 
         required=False,
@@ -76,6 +77,24 @@ class ExerciseForm(ModelForm):
             'onfocus': 'changeColor(this)', 
         })
     )
+
+    EXERCISE_TYPE_CHOICES = [
+        ("WARM-UP", "WARM-UP"),
+        ("EXERCISE", "EXERCISE"),
+        ("ARPEGGIO", "ARPEGGIO"),
+        ("SONG", "SONG"),
+    ]
+
+    exercise_type = forms.ChoiceField(
+        label='Exercise Type',
+        choices=EXERCISE_TYPE_CHOICES,
+        widget=forms.Select(attrs={
+            'class': 'exercise-type',
+        }),
+        # initial="ARPEGGIO",
+        required=False,
+    )
+
 
 ExerciseFormSet = modelformset_factory(Exercise, form=ExerciseForm, extra=4)
 
