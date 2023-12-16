@@ -4,13 +4,14 @@ from .models import Routine, Exercise
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from frontend.data import textContent
+from .serializers import RegisterSerializer
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password",)
+        serializer_class = RegisterSerializer
 
     def save(self, commit=True):
         user = super().save(commit=False)

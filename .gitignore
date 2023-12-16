@@ -10,3 +10,4 @@ node-backend/
 pythonanywhere/
 config.json
 react_app/
+node_modules/

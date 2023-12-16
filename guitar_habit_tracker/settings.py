@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'habit_tracker',
-    'debug_toolbar',
     'frontend.apps.FrontendConfig',
+    'rest_framework',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'guitar_habit_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/templates', )],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', )],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
