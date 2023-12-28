@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const TimeRadioGroup = ({ timeChoices, }) => {
+const TimeRadioGroup = ({ timeChoices, timeUnit, index }) => {
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  const handleTimeChange = (choice) => {
+    setSelectedTime(choice);
+  };
+
   return (
     <div className="btn-time-group">
       {timeChoices.map((choice) => (
-        <label key={choice[0]} htmlFor={`time-${choice[0]}`} className="btn btn-time">
-          <input
-            type="radio"
-            id={`time-${choice[0]}`}
-            name="time"
-            value={choice[0]}
-            // checked={selectedTime === choice[0]}
-            // onChange={onTimeChange}
+        <label key={choice} htmlFor={`stripe-${index}-time-${choice}`} className={`btn btn-time ${selectedTime === choice ? 'selected' : ''}`}>
+          <input type="radio" id={`stripe-${index}-time-${choice}`} name="time" value={choice}
+           checked={selectedTime === choice}
+           onChange={() => handleTimeChange(choice)}
           />
-          <span className="time-number">{choice[1]}</span>
-          <span className="unit">min</span>
+          <span className="time-number">{choice}</span>
+          <span className="unit">{timeUnit}</span>
         </label>
       ))}
     </div>

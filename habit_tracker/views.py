@@ -4,12 +4,14 @@ from habit_tracker.forms import CustomUserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
-from rest_framework import status
+from rest_framework import status, generics
 from .serializers import UserSerializer, RoutineSerializer, ExerciseSerializer
 from .models import Routine, Exercise
 from django.contrib.auth.models import User
+import json
 
 
 def signup(request):
@@ -49,20 +51,38 @@ def get_user(request):
             return JsonResponse(data)
         except User.DoesNotExist:
             return JsonResponse({'error': 'User does not exist.'}, status=status.HTTP_404_NOT_FOUND)
-        
 
-@api_view(['GET', 'POST'])
-def routine(request):
-    if request.method == 'GET':
+
+class RoutineView(APIView):
+    def get(self, request):
         routine = Routine.objects.all()
         serializer = RoutineSerializer(routine, many=True)
         return Response(serializer.data)
-    elif request.method == 'POST':
-        serializer = RoutineSerializer(data=request.data)
+
+    def post(self, request):
+        data = request.data
+        serializer = RoutineSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
+            return Response({'message': 'Success'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+# @api_view(['GET', 'POST'])
+# def routine(request):
+#     if request.method == 'GET':
+#         routine = Routine.objects.all()
+#         serializer = RoutineSerializer(routine, many=True)
+#         return JsonResponse(serializer.data, safe=False)
+#     elif request.method == 'POST':
+#         data = request.data
+#         serializer = RoutineSerializer(data=data)
+#         print("we are in views.py def routine")
+#         if serializer.is_valid():
+#             serializer.save()
+#             print("SERIALIZER SAVED")
+#             return JsonResponse({'message': 'Success'}, status=status.HTTP_201_CREATED)
+#         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET', 'POST'])
@@ -70,13 +90,15 @@ def exercise(request):
     if request.method == 'GET':
         exercise = Exercise.objects.all()
         serializer = ExerciseSerializer(exercise, many=True)
-        return Response(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
     elif request.method == 'POST':
         serializer = ExerciseSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'message': 'Success'}, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 

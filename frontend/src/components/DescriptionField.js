@@ -3,7 +3,7 @@ import React from 'react';
 const DescriptionField = ({ onInput, onFocus, placeholder }) => {
   return (
     <textarea
-      className="input-box description"
+      className="collapsible-description input-box description"
       type="text"
       data-autoresize="true"
       onInput={onInput}

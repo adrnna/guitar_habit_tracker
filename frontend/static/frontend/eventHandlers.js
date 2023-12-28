@@ -4,12 +4,19 @@ console.log('eventHandlers.js is loaded.');
 // Check screen width and set initial state
 window.addEventListener('load', function() {
     var sidebar = document.querySelector('.sidebar');
-    const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
-    const arrowIcon = toggleSidebarButton.querySelector('.navbar');
+    var arrowIcon;
+    if (sidebar) {
+        const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
+        if (toggleSidebarButton) {
+            arrowIcon = toggleSidebarButton.querySelector('.navbar');
+        }
 
-    if (window.innerWidth > 768) { // Adjust the breakpoint as needed
-        sidebar.classList.add("active");
-        arrowIcon.classList.add("active");
+        if (window.innerWidth > 768) { // Adjust the breakpoint as needed
+            sidebar.classList.add("active");
+            if (arrowIcon) { 
+                arrowIcon.classList.add("active");
+            }
+        }
     }
 });
 
@@ -29,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
         })
-    };
+    }
 
     // Attach event listener for toggling sidebar
     if (collapsibleButton) {
@@ -41,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
         })
-    };
+    }
 
     if (overlayContainer) {
         // // Attach event listener for dropdown button clicks
@@ -124,12 +131,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         // Attach event listener for collapsible button
-        overlayContainer.addEventListener("click", function(event) {
-            const collapsibleButton = event.target.closest('.btn-collapsible');
-            if (collapsibleButton) {
-                handleCollapsibleButtonClick(collapsibleButton);
-            }
-        });
+        // overlayContainer.addEventListener("click", function(event) {
+        //     const collapsibleButton = event.target.closest('.btn-collapsible');
+        //     if (collapsibleButton) {
+        //         handleCollapsibleButtonClick(collapsibleButton);
+        //     }
+        // });
 
         // Attach event listener for clicking outside dropdown
         document.addEventListener('click', function(event) {
@@ -151,21 +158,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
 
-        overlayContainer.addEventListener("keydown", function(event) {
-            const target = event.target;
+        // overlayContainer.addEventListener("keydown", function(event) {
+        //     const target = event.target;
+        //     console.log("checking if enter pressed...")
     
-            // Check if the pressed key is "Enter"
-            if ((event.key === "Enter" || event.keyCode === 13) && target.classList.contains("input-box") && target.classList.contains("name")){
-                // Find the corresponding button element within the same stripe
-                const stripe = target.closest(".stripe-container");
-                // const button = stripe.querySelector(".btn-confirm");
-                const button = target.nextElementSibling;
-                if (button && button.classList.contains("btn-confirm")) {
-                    // Simulate a click on the button
-                    toggleInput(button);
-                }
-            }
-        });        
+        //     // Check if the pressed key is "Enter"
+        //     if ((event.key === "Enter") && target.classList.contains("input-box") && target.classList.contains("name")){
+        //         // Find the corresponding button element within the same stripe
+        //         const stripe = target.closest(".stripe-container");
+        //         // const button = stripe.querySelector(".btn-confirm");
+        //         const button = target.nextElementSibling;
+        //         if (button && button.classList.contains("btn-confirm")) {
+        //             // Simulate a click on the button
+        //             toggleInput(button);
+        //         }
+        //     }
+        // });        
     }
 });
 
@@ -200,20 +208,20 @@ document.addEventListener("DOMContentLoaded", function() {
 // }
 
 // Function to handle collapsible button click
-function handleCollapsibleButtonClick(collapsibleButton) {
-    const parentStripeContainer = collapsibleButton.closest('.stripe-and-collapsible');
-    const collapsibleContent = parentStripeContainer.querySelector('.collapsible-content');
-    collapsibleButton.classList.toggle("active");
-    collapsibleContent.classList.toggle("active");
-    // collapsibleContent.style.display = collapsibleContent.style.display === "block" ? "none" : "block";
+// function handleCollapsibleButtonClick(collapsibleButton) {
+//     const parentStripeContainer = collapsibleButton.closest('.stripe-and-collapsible');
+//     const collapsibleContent = parentStripeContainer.querySelector('.collapsible-content');
+//     collapsibleButton.classList.toggle("active");
+//     collapsibleContent.classList.toggle("active");
+//     // collapsibleContent.style.display = collapsibleContent.style.display === "block" ? "none" : "block";
 
-    if (collapsibleContent.style.height === "0px" || !collapsibleContent.style.height) {
-        collapsibleContent.style.height = collapsibleContent.scrollHeight + "px"; // Expand the content
-    } else { 
-        collapsibleContent.style.height = null;
-        // collapsibleContent.style.height = "0px"; // Collapse the content
-    }
-}
+//     if (collapsibleContent.style.height === "0px" || !collapsibleContent.style.height) {
+//         collapsibleContent.style.height = collapsibleContent.scrollHeight + "px"; // Expand the content
+//     } else { 
+//         collapsibleContent.style.height = null;
+//         // collapsibleContent.style.height = "0px"; // Collapse the content
+//     }
+// }
 
 function toggleSidebar() {
     var sidebar = document.querySelector('.sidebar');
@@ -300,36 +308,85 @@ function assignStripeNumber(newForm){
     });    
 }
 
-function changeColor(inputBox) {
-    inputBox.classList.add("active");
-}
+// function changeColor(inputBox) {
+//     inputBox.classList.add("active");
+// }
 
-function toggleInput(button) {
-    const inputBox = button.parentElement.querySelector(".input-box");
-    if (inputBox.value.trim() == "") {
-        inputBox.classList.add("empty")
-        inputBox.classList.add("disappear")
-        setTimeout(function() {
-            inputBox.classList.remove("empty");
-            inputBox.classList.remove("disappear");
-        }, 3000);
-    }else{
-        if (inputBox.disabled) {
-            inputBox.classList.remove("active");
-            inputBox.disabled = false;
-            button.classList.remove("disabled");
-            inputBox.classList.remove("valid-name");
-            button.innerHTML = '<span class="material-symbols-outlined">done</span>';
-        }else{
-            inputBox.disabled = true;
-            inputBox.classList.remove("active");
-            button.classList.add("disabled");
-            inputBox.classList.add("valid-name")
-            inputBox.classList.remove("empty")
-            button.innerHTML = '<span class="material-symbols-outlined">edit</span>';
-        }
-    }
-}
+// function toggleInput(button) {
+//     const inputBox = button.parentElement.querySelector(".input-box");
+//     if (inputBox.value.trim() == "") {
+//         console.log("here")
+//         inputBox.classList.add("empty")
+//         inputBox.classList.add("disappear")
+//         setTimeout(function() {
+//             inputBox.classList.remove("empty");
+//             inputBox.classList.remove("disappear");
+//         }, 3000);
+//     }else{
+//         if (inputBox.disabled) {
+//             console.log("here2")
+//             inputBox.classList.remove("active");
+//             inputBox.disabled = false;
+//             button.classList.remove("disabled");
+//             inputBox.classList.remove("valid-name");
+//             button.innerHTML = '<span class="material-symbols-outlined">done</span>';
+//         }else{
+//             inputBox.disabled = true;
+//             console.log("here3")
+//             inputBox.classList.remove("active");
+//             button.classList.add("disabled");
+//             inputBox.classList.add("valid-name")
+//             inputBox.classList.remove("empty")
+//             button.innerHTML = '<span class="material-symbols-outlined">edit</span>';
+//         }
+//     }
+// }
+
+// function toggleInput(button) {
+//     const inputBox = button.parentElement.querySelector(".input-box");
+  
+//     if (inputBox.value.trim() === "") {
+//       handleEmptyInput(inputBox);
+//     } else {
+//       handleNonEmptyInput(button, inputBox);
+//     }
+//   }
+  
+//   function handleEmptyInput(inputBox) {
+//     console.log("here");
+//     inputBox.classList.add("empty", "disappear");
+  
+//     setTimeout(() => {
+//       inputBox.classList.remove("empty", "disappear");
+//     }, 3000);
+//   }
+  
+//   function handleNonEmptyInput(button, inputBox) {
+//     if (inputBox.disabled) {
+//       console.log("here2");
+//       disableInput(button, inputBox);
+//     } else {
+//       console.log("here3");
+//       enableInput(button, inputBox);
+//     }
+//   }
+  
+//   function disableInput(button, inputBox) {
+//     inputBox.classList.remove("active");
+//     inputBox.disabled = false;
+//     button.classList.remove("disabled");
+//     inputBox.classList.remove("valid-name");
+//     button.innerHTML = '<span class="material-symbols-outlined">done</span>';
+//   }
+  
+//   function enableInput(button, inputBox) {
+//     inputBox.disabled = true;
+//     inputBox.classList.remove("active");
+//     button.classList.add("disabled");
+//     inputBox.classList.add("valid-name", "empty");
+//     button.innerHTML = '<span class="material-symbols-outlined">edit</span>';
+//   }
+  
 
 function addAutoResize() {
     document.querySelectorAll('[data-autoresize]').forEach(function (element) {

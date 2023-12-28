@@ -8,10 +8,13 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', include('frontend.urls')),
-    path('routines/', views.routine, name='routines'),
+    path('api/routines/', views.RoutineView.as_view(), name='routines'),
+    # path('api/routines/', views.routine, name='routines'),
     path('exercises/', views.exercise, name='exercises'),
     path('api/current_user/', views.get_user, name='get_user'),
+    # include frontend urls last - order matters
+    path('', include('frontend.urls')),
+
     # path('', views.index, name='home'),
     # path('signup/', views.signup, name='signup'),
     # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),

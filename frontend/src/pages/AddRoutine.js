@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import textContent from '../../textContent';
-import GuitarRoutineForm from '../components/GuitarRoutineForm';
+import RoutineForm from '../components/RoutineForm';
+import guitar_pic from '../../static/images/guitar_pic.png';
 
 
 const AddRoutine = () => {
@@ -14,10 +15,11 @@ const AddRoutine = () => {
       </div>
       <div className="overlay-content">
         <div id="overlayContainer" className="overlay-container">
-        <p class="overlay-text">{ textContent.newRoutineInstructions }</p>
-          <GuitarRoutineForm />
+          <p className="overlay-text">{ textContent.newRoutineInstructions }</p>
+          <RoutineForm />
         </div>
       </div>
+      <img src={guitar_pic} alt="Guitar image" className="guitar-image"/>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import BarChart from '../components/BarChart';
 
 const Home = () => {
     console.log("Home component is being rendered!");
@@ -9,7 +10,7 @@ const Home = () => {
         <p className="motivation-text">Your motivation text</p>
         <div id="overlayContainer" className="overlay-container">
             <div className="chart-canvas" style={{ height: "500px" }}>
-                <canvas id="myChart"></canvas>
+                <BarChart/>
             </div>
         </div>
       </div>
