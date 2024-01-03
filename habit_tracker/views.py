@@ -85,21 +85,34 @@ class RoutineView(APIView):
 #         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-@api_view(['GET', 'POST'])
-def exercise(request):
-    if request.method == 'GET':
+# @api_view(['GET', 'POST'])
+# def exercise(request):
+#     if request.method == 'GET':
+#         exercise = Exercise.objects.all()
+#         serializer = ExerciseSerializer(exercise, many=True)
+#         return JsonResponse(serializer.data, safe=False)
+#     elif request.method == 'POST':
+#         serializer = ExerciseSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return JsonResponse({'message': 'Success'}, status=status.HTTP_201_CREATED)
+#         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ExerciseView(APIView):
+    def get(self, request):
         exercise = Exercise.objects.all()
         serializer = ExerciseSerializer(exercise, many=True)
-        return JsonResponse(serializer.data, safe=False)
-    elif request.method == 'POST':
-        serializer = ExerciseSerializer(data=request.data)
+        return Response(serializer.data)
+
+    def post(self, request):
+        data = request.data
+        serializer = ExerciseSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse({'message': 'Success'}, status=status.HTTP_201_CREATED)
-        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
+            return Response({'message': 'Success'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 # from django.shortcuts import render, redirect, get_object_or_404

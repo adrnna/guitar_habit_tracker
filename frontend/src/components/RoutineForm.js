@@ -6,15 +6,16 @@ import SubmitButton from './SubmitButton';
 import textContent from '../../textContent';
 
 
-const RoutineForm = () => {
+const RoutineForm = ({setSuccess}) => {
   const defaultTypes = textContent.typeOptions;
 
   const initialExercises = defaultTypes.map((defaultType) => ({
-    name: '', time: '', description: '', link: '', defaultType,
+    name: '', time: '', description: '', link: '', type: defaultType,
   }));
 
   const [routineName, setRoutineName] = useState('');
-  const [exercises, setExercises] = React.useState(initialExercises);
+  const [exercises, setExercises] = useState(initialExercises);
+  const [exerciseInfo, setExerciseInfo] = useState(initialExercises);
 
   const handleAddExercise = () => {
     setExercises([...exercises, { name: '', time: '', description: '', link: '' }]);
@@ -24,60 +25,89 @@ const RoutineForm = () => {
     setExercises(exercises.filter((row, i) => i !== index));
   };
 
-  const handleFormSubmit = async (event) => {
-    // default native html behavior is browser reload
-    event.preventDefault();
+  const submitExercises = async (csrftoken) => {
+    if (Array.isArray(exerciseInfo)) {
+      // Iterate over each exercise in the array
+      for (let i = 0; i < exerciseInfo.length; i++) {
+        const exercise = exerciseInfo[i];
+        console.log(exercise.name)
+        console.log(exercise.type)
+        console.log(exercise.time)
+        
+        await axios.post('api/exercises/', {exercise_name: exercise.name, exercise_type: exercise.type, time: exercise.time }, {
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(response => 
+          {console.log('ExResponse:', response);
+        })
+        .catch(error => {
+          console.error('ExError:', error);
+        })
+      } 
+    }
+  };
 
-    // const formData = new FormData();
-    // formData.append('routine_name', routineName);
-    // console.log(routineName);
-
-    const csrftoken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
-    console.log(csrftoken);
-    console.log(routineName);
+  const submitRoutine = async (csrftoken) => {
     const exercises=[1,2,3,5];
-  
-    axios.post('api/routines/', { routine_name: routineName, exercises: exercises, }, {
+    await axios.post('api/routines/', { routine_name: routineName, exercises: exercises, }, {
       headers: {
         'X-CSRFToken': csrftoken,
         'Content-Type': 'application/json',
       },
     })
     .then(response => 
-      {console.log('Response:', response);
+      {console.log('RoutineResponse:', response),
+      setSuccess(true);
     })
     .catch(error => {
       console.error('Error:', error);
       // Handle error
     });
-      // console.log(response.data);  // Log the response from Django
-      // Handle success or navigate to another page
   }
 
-  const handleInput = (event) => {
-    // Handle input logic, e.g., updating routineName
-    setRoutineName(event.target.value);
+  const handleFormSubmit = async (event) => {
+    // default native html behavior is browser reload
+    event.preventDefault();
+
+    // const formData = new FormData();
+    // formData.append('routine_name', routineName);
+
+    const csrftoken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
     console.log(routineName);
+    console.log(exerciseInfo);
+
+    await submitExercises(csrftoken);
+    await submitRoutine(csrftoken);
   };
 
+  const handleInput = (event) => {
+    setRoutineName(event.target.value);
+  };
+  
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div className="routine-name">
-        <InputField value={routineName} onInput={handleInput} placeholder={textContent.inputRoutineNamePlaceholder} className="input-box name"/>
-      </div>
-        {exercises.map((exercise, index) => (
-          <ExerciseRow
-            key={index}
-            index={index}
-            exercise={exercise}
-            handleChange={(e) => setExercises(exercise, e.target.name, e.target.value)}
-            onRemove={() => handleRemoveExercise(index)}
-            onAdd={() => handleAddExercise(index)}
-          />
-        ))}
-      <SubmitButton/>
-    </form>
+    <div>
+      <form onSubmit={handleFormSubmit}>
+        <div className="routine-name">
+          <InputField value={routineName} onInput={handleInput} placeholder={textContent.inputRoutineNamePlaceholder} className="input-box name"/>
+        </div>
+          {exerciseInfo.map((exercise, index) => (
+            <ExerciseRow
+              key={index}
+              index={index}
+              exercise={exercise}
+              exerciseInfo={exerciseInfo}
+              setExerciseInfo={setExerciseInfo}
+              onRemove={() => handleRemoveExercise(index)}
+              onAdd={() => handleAddExercise(index)}
+            />
+          ))}
+        <SubmitButton/>
+      </form>
+    </div>
   );
 };
 

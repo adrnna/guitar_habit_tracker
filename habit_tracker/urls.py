@@ -10,7 +10,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('api/routines/', views.RoutineView.as_view(), name='routines'),
     # path('api/routines/', views.routine, name='routines'),
-    path('exercises/', views.exercise, name='exercises'),
+    path('api/exercises/', views.ExerciseView.as_view(), name='exercises'),
     path('api/current_user/', views.get_user, name='get_user'),
     # include frontend urls last - order matters
     path('', include('frontend.urls')),

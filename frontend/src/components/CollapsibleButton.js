@@ -12,12 +12,15 @@ const CollapsibleButton = () => {
     const parentStripeContainer = collapsibleButton.closest('.stripe-and-collapsible');
     const collapsibleContent = parentStripeContainer.querySelector('.collapsible-content');
 
-    if (collapsibleContent.style.height === "0px" || !collapsibleContent.style.height) {
+    if (!collapsibleContent.style.height) {
         collapsibleContent.style.height = collapsibleContent.scrollHeight + "px"; // Expand the content
+        collapsibleContent.classList.add('active');
+        collapsibleButton.classList.add('active');
     } else { 
         collapsibleContent.style.height = null;
+        collapsibleContent.classList.remove('active');
+        collapsibleButton.classList.remove('active');
     }
-    console.log("finish collaps")
   };
 
   return (
