@@ -1,17 +1,7 @@
 import React from 'react';
-// import InputFieldUtils from './InputFieldUtils';
+import InputFieldUtils from './InputFieldUtils';
 
 const InputField = ({ onInput, placeholder, className }) => {
-
-  const handleFocus = (event) => {
-    const inputBox = event.target;
-    inputBox.classList.add("active");
-    const activeInputBox = document.querySelector(".input-box.active");
-    // this is not working:
-    if (activeInputBox && inputBox !== activeInputBox) {
-      activeInputBox.classList.remove("active");
-    }
-  };
 
   const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
@@ -71,22 +61,21 @@ const InputField = ({ onInput, placeholder, className }) => {
     button.innerHTML = '<span class="material-symbols-outlined">edit</span>';
   }
 
-
-
   return (
-    <div className="input-container">
-      <input
-        className={className}
-        type="text"
-        onInput={onInput}
-        onFocus={handleFocus}
-        onKeyDown={handleEnterKey}
-        placeholder={placeholder}
-      />
-      <button type="button" className="btn btn-confirm" onClick={toggleInput}>
-        <span className="material-symbols-outlined">check</span>
-      </button>
-    </div>
+    <InputFieldUtils>
+      <div className="input-container">
+        <input
+          className={className}
+          type="text"
+          onInput={onInput}
+          onKeyDown={handleEnterKey}
+          placeholder={placeholder}
+        />
+        <button type="button" className="btn btn-confirm" onClick={toggleInput}>
+          <span className="material-symbols-outlined">check</span>
+        </button>
+      </div>
+    </InputFieldUtils>
   );
 };
 

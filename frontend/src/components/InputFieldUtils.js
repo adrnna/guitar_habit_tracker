@@ -1,6 +1,7 @@
 import React from 'react';
 
-const InputFieldUtils = () => {
+const InputFieldUtils = ({children}) => {
+
   function handleFocus(event) {
     const inputBox = event.target;
     inputBox.classList.add("active");
@@ -10,12 +11,12 @@ const InputFieldUtils = () => {
     }
   }
 
-  // Define other utility functions here
 
-  return {
-    handleFocus,
-    // Other utility functions here
-  };
+  return (
+    <div onFocus={handleFocus}>
+      {children}
+    </div>
+  );
 };
 
 export default InputFieldUtils;

@@ -30,11 +30,14 @@ const RoutineForm = ({setSuccess}) => {
       // Iterate over each exercise in the array
       for (let i = 0; i < exerciseInfo.length; i++) {
         const exercise = exerciseInfo[i];
-        console.log(exercise.name)
-        console.log(exercise.type)
-        console.log(exercise.time)
         
-        await axios.post('api/exercises/', {exercise_name: exercise.name, exercise_type: exercise.type, time: exercise.time }, {
+        await axios.post('api/exercises/', {
+          exercise_name: exercise.name,
+          exercise_type: exercise.type, 
+          time: exercise.time, 
+          description: exercise.description,
+          link: exercise.link
+        }, {
           headers: {
             'X-CSRFToken': csrftoken,
             'Content-Type': 'application/json',
@@ -76,7 +79,6 @@ const RoutineForm = ({setSuccess}) => {
     // formData.append('routine_name', routineName);
 
     const csrftoken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
-    console.log(routineName);
     console.log(exerciseInfo);
 
     await submitExercises(csrftoken);
@@ -86,13 +88,18 @@ const RoutineForm = ({setSuccess}) => {
   const handleInput = (event) => {
     setRoutineName(event.target.value);
   };
-  
+
 
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
         <div className="routine-name">
-          <InputField value={routineName} onInput={handleInput} placeholder={textContent.inputRoutineNamePlaceholder} className="input-box name"/>
+          <InputField 
+            value={routineName} 
+            onInput={handleInput} 
+            placeholder={textContent.inputRoutineNamePlaceholder} 
+            className="input-box name"
+            />
         </div>
           {exerciseInfo.map((exercise, index) => (
             <ExerciseRow

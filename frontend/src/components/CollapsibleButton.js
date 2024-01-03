@@ -21,6 +21,19 @@ const CollapsibleButton = () => {
         collapsibleContent.classList.remove('active');
         collapsibleButton.classList.remove('active');
     }
+
+  //   if (collapsibleContent.style.display === "none" || !collapsibleContent.style.display) {
+  //     collapsibleContent.style.display = "block";
+  //     collapsibleContent.style.height = collapsibleContent.scrollHeight + "px"; // Expand the content
+  //     collapsibleContent.classList.add('active');
+  //     collapsibleButton.classList.add('active');
+  // } else { 
+  //     collapsibleContent.style.height = null;
+  //     collapsibleContent.style.display = "none";
+  //     collapsibleContent.classList.remove('active');
+  //     collapsibleButton.classList.remove('active');
+  // }
+
   };
 
   return (

@@ -13,7 +13,8 @@ class Exercise(models.Model):
     exercise_name = models.CharField(max_length = 200)
     time = models.CharField(max_length=10, blank=False, null=False, default="5 min")
     description = models.TextField(blank = True)
-    link = models.URLField(blank = True)
+    # link = models.URLField(blank = True)
+    link = models.TextField(blank = True)
     exercise_type = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
