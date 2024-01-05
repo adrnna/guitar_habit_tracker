@@ -6,20 +6,32 @@
     "logout": "log out",
     "login": "log in",
     "signup": "sign up",
-    "titleCenterPage": "Welcome to the Progress Tracker!",
-    "keywordAddRoutine": "ADD",
-    "keywordChooseRoutine": "CHOOSE",
-    "titleAddRoutine": "your customized routine",
-    "motivation": "Practice 40h/day.",
     "home": "Home",
     "startNewSession": "Start New Session",
     "chooseYourRoutine": "Choose Your Routine",
     "composeYourRoutine": "Compose a New Routine",
     "editYourRoutines": "Edit your Routines",
-    "playYourRoutine": "START ROUTINE",
     "justJam": "Just Jam",
     "browseOldSessions": "Browse Old Sessions",
+    "sidebarFooterSignature": "adrnna 2023",
 
+
+    "titleCenterPage": "Welcome to the Progress Tracker!",
+    
+    
+    "keywordChooseRoutine": "CHOOSE",
+    "routineTitle": "Routine: ",
+    "type": "Type: ",
+    "exName": "Exercise name:",
+    "time": "Time: ",
+    "description": "Description: ",
+    "link": "Link: ",
+
+
+    "keywordAddRoutine": "ADD",
+    "titleAddRoutine": "your customized routine",
+    "motivation": "Practice 40h/day.",
+    "playYourRoutine": "START ROUTINE",
     "overlayText": "This is an overlay content.",
     "newRoutineTitle": "What type? How long? What is it? How does it work? Where can you find it? Who plays it? How difficult is it?",
     "editRoutineTitle": "Here are all your routines:",
@@ -31,7 +43,6 @@
     "timeUnit": "min",
     "addLink": "Add a link:",
     "addDescription": "Add a description",
-    "saveButton": "SAVE",
+    "saveButton": "SAVE"
 
-    "sidebarFooterSignature": "adrnna 2023"
 }
