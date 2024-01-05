@@ -26,6 +26,8 @@ const RoutineForm = ({setSuccess}) => {
   };
 
   const submitExercises = async (csrftoken) => {
+    const exerciseIds = [];
+
     if (Array.isArray(exerciseInfo)) {
       // Iterate over each exercise in the array
       for (let i = 0; i < exerciseInfo.length; i++) {
@@ -45,17 +47,23 @@ const RoutineForm = ({setSuccess}) => {
         })
         .then(response => 
           {console.log('ExResponse:', response);
+          exerciseIds.push(response.data.id);
+          console.log(exerciseIds);
         })
         .catch(error => {
           console.error('ExError:', error);
         })
       } 
     }
+    return exerciseIds;
   };
 
-  const submitRoutine = async (csrftoken) => {
-    const exercises=[1,2,3,5];
-    await axios.post('api/routines/', { routine_name: routineName, exercises: exercises, }, {
+  const submitRoutine = async (csrftoken, exerciseIds) => {
+    const routineData = {
+      routine_name: routineName,
+      exercises: exerciseIds,
+    };
+    await axios.post('api/routines/', routineData, {
       headers: {
         'X-CSRFToken': csrftoken,
         'Content-Type': 'application/json',
@@ -75,14 +83,14 @@ const RoutineForm = ({setSuccess}) => {
     // default native html behavior is browser reload
     event.preventDefault();
 
-    // const formData = new FormData();
-    // formData.append('routine_name', routineName);
-
     const csrftoken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
     console.log(exerciseInfo);
 
     await submitExercises(csrftoken);
-    await submitRoutine(csrftoken);
+    const exerciseIds = await submitExercises(csrftoken);
+    await submitRoutine(csrftoken, exerciseIds);
+
+    // await submitRoutine(csrftoken);
   };
 
   const handleInput = (event) => {
@@ -116,6 +124,6 @@ const RoutineForm = ({setSuccess}) => {
       </form>
     </div>
   );
-};
+};      
 
 export default RoutineForm;
