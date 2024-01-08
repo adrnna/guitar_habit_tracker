@@ -198,7 +198,7 @@ input {
     font-size: var(--font-size);
     font-weight: bold; 
     font-family: inherit;
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 .sidebar-text {
@@ -206,8 +206,9 @@ input {
 }
 
 .btn-sidebar.rollout-options {
-    background-color: #cdd3ccb9;
-    margin-bottom: 3px;
+    background-color: #a9a9a9a8;
+    margin-bottom: 1px;
+    margin-top: 2px;
     font-weight: normal; 
     margin-left: 0px;
 }
@@ -872,6 +873,10 @@ form select:hover {
     color: var(--funky-font-color);
 }
 
+.overlay-stripe.routine {
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .overlay-stripe {
         grid-template-columns: repeat(4, 1fr);
@@ -900,7 +905,7 @@ form select:hover {
 .stripe-container {
     /* max-width: 100%; */
     /* position:relative; */
-    max-width: min-content;
+    /* max-width: min-content; */
     display: grid;
     margin: 0 auto;
     /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
@@ -919,7 +924,7 @@ form select:hover {
 
 .stripe-and-collapsible{
     background-color: inherit;
-    /* max-width: min-content; */
+    max-width: min-content;
     width: auto;
     display: grid;
     box-shadow: 2px 0px 5px #9a9a9ad2;
@@ -979,8 +984,9 @@ form select:hover {
 .routine_title {
     text-align: left;
     font-weight: bold;
-    font-size: 20px;
-    padding: 10px
+    font-size: 30px;
+    padding: 10px;
+    background: linear-gradient(to bottom, #06ff1d29, 70%, #000000b7 );
 }
 
 .exercise-info {
@@ -1005,7 +1011,8 @@ form select:hover {
 
 .routine {
     display: block;
-    width: auto;
+    max-width: none;
+    /* width: auto; */
     height: auto;
 }
 
@@ -1024,6 +1031,19 @@ form select:hover {
     align-items: center;
 
 }
+
+thead {
+    /* background-color: #f2f2f2;  */
+    /* color: #333;  */
+    font-weight: bold; 
+}
+
+/* thead th {
+    padding: 10px; 
+    text-align: left; 
+    border-bottom: 2px solid #ddd; 
+} */
+
 
 .guitar-image {
     width: 180px;

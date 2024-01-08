@@ -9,6 +9,7 @@ import JustJam from '../pages/JustJam';
 import EditRoutine from '../pages/EditRoutine';
 import AddRoutine from '../pages/AddRoutine';
 import Success from '../pages/SuccessPage';
+import ChosenRoutine from '../pages/ChosenRoutine';
 
 
 const AppRoutes = () => {
@@ -29,6 +30,7 @@ const AppRoutes = () => {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="choose-routine" element={<ChooseRoutine />} />
+            <Route path="choose-routine/:routineId" element={<ChosenRoutine />} />
             <Route path="just-jam" element={<JustJam />} />
             <Route path="edit-routine" element={<EditRoutine />} />
             <Route path="add-routine" element={<AddRoutine success={success} resetSuccess={resetSuccess}/>} />
