@@ -99,7 +99,6 @@ const RoutineForm = ({setSuccess}) => {
 
 
   return (
-    <div>
       <form onSubmit={handleFormSubmit}>
         <div className="routine-name">
           <InputField 
@@ -122,7 +121,6 @@ const RoutineForm = ({setSuccess}) => {
           ))}
         <SubmitButton/>
       </form>
-    </div>
   );
 };      
 

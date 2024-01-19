@@ -1,12 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom";
 import AppRoutes from "./components/Routes";
 
 console.log("index.js invoked!");
 
-ReactDOM.render(
+const domNode = document.getElementById('app')
+const root = createRoot(domNode);
+
+root.render(
     <React.StrictMode>
         <AppRoutes />
-    </React.StrictMode>,
-    document.getElementById('app')
+    </React.StrictMode>    
 );

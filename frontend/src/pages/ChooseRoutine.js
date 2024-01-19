@@ -44,23 +44,24 @@ const ChooseRoutine = () => {
   };
 
   return (
-    <div>
-      <div className="title-text-container">
-        <div className="keyword text-box">{ textContent.keywordChooseRoutine}</div>
-        <div className="text-box">{ textContent.titleAddRoutine }</div>
-        <div className="text-box">{ textContent.newRoutineTitle }</div>
-      </div>
-
+    <div className='content-container'>
       <div className="overlay-content">
+        <div className="title-text-container">
+          <div className="keyword text-box big-text-box">{ textContent.keywordChooseRoutine}</div>
+          {/* <div className="text-box">{ textContent.titleAddRoutine }</div>
+          <div className="text-box">{ textContent.newRoutineTitle }</div> */}
+        </div>
         <div id="overlayContainer" className="overlay-container active">
           {routineList.map((routine, index) => (
             <div key={index} className="stripe-container ">
-              <div className="stripe-and-collapsible overlay-stripe routine" onClick={() => handleRoutineClick(routine)}>
-                <SingleRoutineStripe 
-                routine={routine} 
-                exerciseList={exerciseList}
-                />
-              </div>
+                <div className="stripe-and-collapsible" onClick={() => handleRoutineClick(routine)}>
+                  {/* <div className="overlay-stripe routine" onClick={() => handleRoutineClick(routine)}> */}
+                    <SingleRoutineStripe 
+                    routine={routine} 
+                    exerciseList={exerciseList}
+                    />
+                  {/* </div> */}
+                </div>
             </div>
           ))}
         </div>

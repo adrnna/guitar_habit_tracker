@@ -1,12 +1,17 @@
 import React from "react";
+import textContent from '../../textContent';
+
 
 const JustJam = () => {
+
     console.log("JustJam page is being rendered!");
+
   return (
-    <div>
-      <h1 className="center-text">JustJam Page</h1>
+    <div className='content-container'>
       <div className="overlay-content">
-        <p className="motivation-text">Your motivation text</p>
+        <div className="title-text-container">
+            <div className="keyword text-box big-text-box">{ textContent.keywordJustJam}</div>
+        </div>
         <div id="overlayContainer" className="overlay-container">
             
         </div>

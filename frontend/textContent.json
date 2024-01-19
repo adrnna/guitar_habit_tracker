@@ -9,7 +9,7 @@
     "home": "Home",
     "startNewSession": "Start New Session",
     "chooseYourRoutine": "Choose Your Routine",
-    "composeYourRoutine": "Compose a New Routine",
+    "composeYourRoutine": "Add a New Routine",
     "editYourRoutines": "Edit your Routines",
     "justJam": "Just Jam",
     "browseOldSessions": "Browse Old Sessions",
@@ -17,6 +17,7 @@
 
 
     "titleCenterPage": "Welcome to the Progress Tracker!",
+    "keywordHome": "STATS",
     
     
     "keywordChooseRoutine": "CHOOSE",
@@ -26,6 +27,22 @@
     "time": "Time: ",
     "description": "Description: ",
     "link": "Link: ",
+    "playButton": "P L A Y",
+
+
+    "keywordPlayRoutine": "PLAY",
+
+
+    "keywordJustJam": "JAM",
+
+
+    "keywordEdit": "EDIT",
+
+
+    "keywordAbout": "ABOUT",
+
+
+    "keywordContact": "CONTACT",
 
 
     "keywordAddRoutine": "ADD",
@@ -43,6 +60,6 @@
     "timeUnit": "min",
     "addLink": "Add a link:",
     "addDescription": "Add a description",
-    "saveButton": "SAVE"
+    "saveButton": "S A V E"
 
 }

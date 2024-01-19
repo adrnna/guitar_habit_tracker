@@ -10,6 +10,7 @@ import EditRoutine from '../pages/EditRoutine';
 import AddRoutine from '../pages/AddRoutine';
 import Success from '../pages/SuccessPage';
 import ChosenRoutine from '../pages/ChosenRoutine';
+import PlayRoutine from '../pages/PlayRoutine';
 
 
 const AppRoutes = () => {
@@ -35,6 +36,7 @@ const AppRoutes = () => {
             <Route path="edit-routine" element={<EditRoutine />} />
             <Route path="add-routine" element={<AddRoutine success={success} resetSuccess={resetSuccess}/>} />
             <Route path="add-routine/success" element={<Success />} /> 
+            <Route path="play-routine/:routineId" element={<PlayRoutine />} /> 
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from 'react';
 import InputFieldUtils from './InputFieldUtils';
 
-const InputField = ({ onInput, placeholder, className }) => {
+const InputField = ({ onInput, placeholder, classNameContainer, className }) => {
 
   const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
@@ -62,10 +62,10 @@ const InputField = ({ onInput, placeholder, className }) => {
   }
 
   return (
-    <InputFieldUtils>
+    <InputFieldUtils classNameContainer={classNameContainer}>
       <div className="input-container">
         <input
-          className={className}
+          className={`${className} ${classNameContainer}`}
           type="text"
           onInput={onInput}
           onKeyDown={handleEnterKey}

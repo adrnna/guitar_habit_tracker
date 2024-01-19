@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SelectType = ({ onChange, options, defaultValue }) => {
+
   return (
     <div className="select">
         <select 

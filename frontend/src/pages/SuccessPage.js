@@ -1,9 +1,11 @@
 import React from "react";
 
 const Success = () => {
+
     console.log("Success page is being rendered!");
+
   return (
-    <div>
+    <div className='content-container'>
       <h1 className="center-text">Success Page</h1>
       <div className="overlay-content">
         <p className="motivation-text">FORM SUBMITTED SUCCESSFULLY!</p>

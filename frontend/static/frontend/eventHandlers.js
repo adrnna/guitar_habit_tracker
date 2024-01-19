@@ -2,29 +2,43 @@ console.log('eventHandlers.js is loaded.');
 
 
 // Check screen width and set initial state
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.querySelector('.sidebar');
     var arrowIcon;
+    const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
+
     if (sidebar) {
         const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
         if (toggleSidebarButton) {
             arrowIcon = toggleSidebarButton.querySelector('.navbar');
         }
+        
 
         if (window.innerWidth > 768) { // Adjust the breakpoint as needed
             sidebar.classList.add("active");
             if (arrowIcon) { 
                 arrowIcon.classList.add("active");
             }
+            if (overlayStripeElem) {
+                overlayStripeElem.forEach(function(element) {
+                    element.classList.add("sidebar-active");
+                }); 
+        }
+        else{
+            if (overlayStripeElem) {
+                overlayStripeElem.forEach(function(element) {
+                    element.classList.add("sidebar-inactive");
+                }); 
         }
     }
-});
+}}});
 
 document.addEventListener("DOMContentLoaded", function() {
     const overlayContainer = document.getElementById("overlayContainer");
     let activeDropdown = null;
     const rolloutOptionsButtons = document.querySelectorAll(".rollout-options-button");
     const collapsibleButton = document.querySelectorAll(".btn-collapsible");
+    const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
  
     if (rolloutOptionsButtons) {
         rolloutOptionsButtons.forEach(function(button) {
@@ -39,16 +53,42 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Attach event listener for toggling sidebar
-    if (collapsibleButton) {
-        collapsibleButton.forEach(function(button) {
-            button.addEventListener("click", function() {
+    // if (collapsibleButton) {
+    //     collapsibleButton.forEach(function(button) {
+    //         button.addEventListener("click", function() {
                 
-                if (button.parentElement.classList.contains('toggle-sidebar-button')){
-                    toggleSidebar();
+    //             if (button.parentElement.classList.contains('toggle-sidebar-button')){
+    //                 toggleSidebar();
+    //                 if (overlayStripeElem) {
+    //                     overlayStripeElem.forEach(function(element) {
+    //                         element.classList.toggle("sidebar-active");
+    //                     });
+    //                 }
+    //             }
+    //         })
+    //     })
+    // }
+
+
+
+    document.addEventListener("click", function(event) {
+        const target = event.target;
+
+        // Check if the clicked element is a collapsible button
+        if (target.parentElement.classList.contains("btn-collapsible")) {
+            const collapsibleButton = target.closest(".btn-collapsible");
+
+            if (collapsibleButton && collapsibleButton.parentElement.classList.contains('toggle-sidebar-button')) {
+                toggleSidebar();
+                if (overlayStripeElem) {
+                    overlayStripeElem.forEach(function(element) {
+                        element.classList.toggle("sidebar-active");
+                    });
                 }
-            })
-        })
-    }
+            }
+        }
+    });
+    
 
     if (overlayContainer) {
         // // Attach event listener for dropdown button clicks

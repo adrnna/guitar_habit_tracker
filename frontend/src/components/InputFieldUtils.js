@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputFieldUtils = ({children}) => {
+const InputFieldUtils = ({classNameContainer, children}) => {
 
   function handleFocus(event) {
     const inputBox = event.target;
@@ -13,7 +13,7 @@ const InputFieldUtils = ({children}) => {
 
 
   return (
-    <div onFocus={handleFocus}>
+    <div className={classNameContainer} onFocus={handleFocus}>
       {children}
     </div>
   );
