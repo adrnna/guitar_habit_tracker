@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import textContent from '../../textContent';
 import { useNavigate } from 'react-router-dom';
 import SingleRoutineStripe from "../components/SingleRoutineStripe";
+import { useSidebar } from '../components/SidebarContext';
 
 
 const ChooseRoutine = () => {
 
   console.log("ChooseRoutine page is being rendered!");
+
+  // const { isSidebarActive } = useSidebar();
+  // console.log(isSidebarActive);
+
   const navigate = useNavigate();
 
   const [routineList, setRoutineList] = useState([]);
@@ -21,7 +26,8 @@ const ChooseRoutine = () => {
           throw new Error(`Error: ${routineResponse.status}`);
         }
         const routineData = await routineResponse.json();
-        setRoutineList(routineData);
+        // flip the order so the newest routine is on top
+        setRoutineList(routineData.reverse());
 
         const exerciseResponse = await fetch('api/exercises/');
         if (!exerciseResponse.ok) {

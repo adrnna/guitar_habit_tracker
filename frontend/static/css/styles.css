@@ -162,7 +162,8 @@ input {
     box-shadow: 1px 8px 20px 7px #1b2130;
     overflow-y: auto;
     overflow-x: hidden;
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
+    /* transition: all 0.5s ease-out; */
 }
 
 .sidebar.active {
@@ -764,7 +765,7 @@ form select:hover {
 }
 
 /* .toggle-sidebar-button {
-    margin-right: 0;
+    appearance: none;
 } */
 
 .material-symbols-outlined.navbar {
@@ -1020,6 +1021,8 @@ form select:hover {
     }
 }
 
+
+
 /* smaller window without sidebar */
 /* @media screen and (max-width: 1430px) {
     .overlay-stripe-elements {
@@ -1134,7 +1137,7 @@ form {
     font-weight: bold;
     font-size: 30px;
     padding: 10px;
-    background: linear-gradient(to bottom, #06ff1d29, 70%, #000000b7 );
+    background: linear-gradient(to bottom, #fefffe6b, 70%, #000000b7 );
 }
 
 .exercise-info {

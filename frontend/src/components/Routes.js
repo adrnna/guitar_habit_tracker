@@ -11,6 +11,7 @@ import AddRoutine from '../pages/AddRoutine';
 import Success from '../pages/SuccessPage';
 import ChosenRoutine from '../pages/ChosenRoutine';
 import PlayRoutine from '../pages/PlayRoutine';
+import { SidebarProvider } from './SidebarContext';
 
 
 const AppRoutes = () => {
@@ -25,20 +26,22 @@ const AppRoutes = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="choose-routine" element={<ChooseRoutine />} />
-            <Route path="choose-routine/:routineId" element={<ChosenRoutine />} />
-            <Route path="just-jam" element={<JustJam />} />
-            <Route path="edit-routine" element={<EditRoutine />} />
-            <Route path="add-routine" element={<AddRoutine success={success} resetSuccess={resetSuccess}/>} />
-            <Route path="add-routine/success" element={<Success />} /> 
-            <Route path="play-routine/:routineId" element={<PlayRoutine />} /> 
-        </Route>
-      </Routes>
+      <SidebarProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="choose-routine" element={<ChooseRoutine />} />
+              <Route path="choose-routine/:routineId" element={<ChosenRoutine />} />
+              <Route path="just-jam" element={<JustJam />} />
+              <Route path="edit-routine" element={<EditRoutine />} />
+              <Route path="add-routine" element={<AddRoutine success={success} resetSuccess={resetSuccess}/>} />
+              <Route path="add-routine/success" element={<Success />} /> 
+              <Route path="play-routine/:routineId" element={<PlayRoutine />} /> 
+          </Route>
+        </Routes>
+      </SidebarProvider>
     </BrowserRouter>
   );
 };

@@ -2,36 +2,36 @@ console.log('eventHandlers.js is loaded.');
 
 
 // Check screen width and set initial state
-document.addEventListener('DOMContentLoaded', function() {
-    var sidebar = document.querySelector('.sidebar');
-    var arrowIcon;
-    const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
+// document.addEventListener('DOMContentLoaded', function() {
+//     var sidebar = document.querySelector('.sidebar');
+//     var arrowIcon;
+//     const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
 
-    if (sidebar) {
-        const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
-        if (toggleSidebarButton) {
-            arrowIcon = toggleSidebarButton.querySelector('.navbar');
-        }
+//     if (sidebar) {
+//         const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
+//         if (toggleSidebarButton) {
+//             arrowIcon = toggleSidebarButton.querySelector('.navbar');
+//         }
         
 
-        if (window.innerWidth > 768) { // Adjust the breakpoint as needed
-            sidebar.classList.add("active");
-            if (arrowIcon) { 
-                arrowIcon.classList.add("active");
-            }
-            if (overlayStripeElem) {
-                overlayStripeElem.forEach(function(element) {
-                    element.classList.add("sidebar-active");
-                }); 
-        }
-        else{
-            if (overlayStripeElem) {
-                overlayStripeElem.forEach(function(element) {
-                    element.classList.add("sidebar-inactive");
-                }); 
-        }
-    }
-}}});
+//         if (window.innerWidth > 768) { // Adjust the breakpoint as needed
+//             sidebar.classList.add("active");
+//             if (arrowIcon) { 
+//                 arrowIcon.classList.add("active");
+//             }
+//             if (overlayStripeElem) {
+//                 overlayStripeElem.forEach(function(element) {
+//                     element.classList.add("sidebar-active");
+//                 }); 
+//         }
+//         else{
+//             if (overlayStripeElem) {
+//                 overlayStripeElem.forEach(function(element) {
+//                     element.classList.add("sidebar-inactive");
+//                 }); 
+//         }
+//     }
+// }}});
 
 document.addEventListener("DOMContentLoaded", function() {
     const overlayContainer = document.getElementById("overlayContainer");
@@ -69,26 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //     })
     // }
 
-
-
-    document.addEventListener("click", function(event) {
-        const target = event.target;
-
-        // Check if the clicked element is a collapsible button
-        if (target.parentElement.classList.contains("btn-collapsible")) {
-            const collapsibleButton = target.closest(".btn-collapsible");
-
-            if (collapsibleButton && collapsibleButton.parentElement.classList.contains('toggle-sidebar-button')) {
-                toggleSidebar();
-                if (overlayStripeElem) {
-                    overlayStripeElem.forEach(function(element) {
-                        element.classList.toggle("sidebar-active");
-                    });
-                }
-            }
-        }
-    });
-    
 
     if (overlayContainer) {
         // // Attach event listener for dropdown button clicks
@@ -263,19 +243,6 @@ document.addEventListener("DOMContentLoaded", function() {
 //     }
 // }
 
-function toggleSidebar() {
-    var sidebar = document.querySelector('.sidebar');
-    const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
-    const arrowIcon = toggleSidebarButton.querySelector('.navbar');
-    sidebar.classList.toggle("active");
-    arrowIcon.classList.toggle("active");
-
-    if (sidebar.width === "0px" || !sidebar.width) {
-        sidebar.width = sidebar.scrollWidth + "px"; // Expand the content
-    } else { 
-        sidebar.width = null;
-    }
-}
 
 function addForm(exerciseForm, formNum, totalForms){
     // clone the clicked on form

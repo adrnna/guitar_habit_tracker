@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import textContent from '../../textContent';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import { useSidebar } from './SidebarContext';
 
 
 const Layout = () => {
   const [username, setUsername] = useState('');
+
 
   // Make an API request to retrieve the current logged-in user's information
   async function fetchUsername() {
@@ -20,6 +22,10 @@ const Layout = () => {
   useEffect(() => {
     fetchUsername();
   }, []);
+
+
+  const { isSidebarActive, toggleSidebar } = useSidebar();
+
 
   return (
     <div>
@@ -46,11 +52,9 @@ const Layout = () => {
       </div>
       <div className="background-container">
         <div className="container">
-          <div className="toggle-sidebar-button">
-            <button className="btn-collapsible">
-              <span className="material-symbols-outlined navbar">arrow_right</span>
-            </button>
-          </div>
+          <button className="btn-collapsible">
+            <span className="material-symbols-outlined navbar" onClick={toggleSidebar}>arrow_right</span>
+          </button>
           <Sidebar />
           <div className="content">
             {/* Specific page content will go here */}

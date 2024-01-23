@@ -56,7 +56,7 @@
     "inputRoutineNamePlaceholder": "Enter routine name",
     "inputPlaceholder": "Enter name",
     "typeOptions": ["WARM-UP", "EXERCISE", "ARPEGGIO", "SONG"],
-    "timeChoices": ["5", "10", "15", "20", "30", "45", "60"],
+    "timeChoices": ["5", "10", "15", "20", "30", "45", "60", "X"],
     "timeUnit": "min",
     "addLink": "Add a link:",
     "addDescription": "Add a description",

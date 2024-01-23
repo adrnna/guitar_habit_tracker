@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import textContent from '../../textContent';
 import RoutineForm from '../components/RoutineForm';
 import guitar_pic from '../../static/images/guitar_pic.png';
+import { useSidebar } from '../components/SidebarContext';
 
 
 const AddRoutine = () => {
@@ -11,33 +12,8 @@ const AddRoutine = () => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
-  const [sidebar, setSidebar] = useState(null);
 
-  useEffect(() => {
-    // const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
-    // const sidebar = document.querySelector(".sidebar");
-
-    const handleAfterLoad = () => {
-      const newSidebar = document.querySelector(".sidebar.active");
-      setSidebar(newSidebar);
-      if (newSidebar && newSidebar.classList.contains("active")) {
-        console.log("YES");
-      }
-    };
-    handleAfterLoad();
-
-    // Check if everything is loaded, then execute handleAfterLoad
-    // if (document.readyState === 'complete') {
-    //   handleAfterLoad();
-    // } else {
-    //   window.addEventListener('load', handleAfterLoad);
-    // }
-
-    // Cleanup the event listener on component unmount
-    // return () => {
-    //   window.removeEventListener('load', handleAfterLoad);
-    // };
-  }, [sidebar]);
+  const { isSidebarActive } = useSidebar();
 
 
   useEffect(() => {
