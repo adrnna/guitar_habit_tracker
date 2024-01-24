@@ -278,6 +278,7 @@ input {
     position: absolute;
     top: 100px;
     width: 70%;
+    transition: width 0.5s ease;
     /* max-width: 70%; */
 }
 
@@ -786,7 +787,7 @@ form select:hover {
 .material-symbols-outlined.navbar.active {
     transform: rotate(180deg);
     left: 270px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .collapsible .material-symbols-outlined {
@@ -972,7 +973,7 @@ form select:hover {
 }
 
 /* smaller window with sidebar */
-@media screen and (max-width: 1550px) {
+@media screen and (max-width: 1600px) {
     .overlay-stripe-elements.sidebar-active{
         grid-template-rows: auto auto;
         grid-template-columns: 1fr 1fr;
@@ -994,15 +995,22 @@ form select:hover {
         grid-column: 3; 
         grid-row: 1 / span 2; 
     }
+    .stripe-and-collapsible  {
+        max-width: 800px;
+    }
+    .exercise_form .stripe-container{
+        /* width: fit-content; */
+        width: auto;
+    }
 }
 
 /* smallest window with sidebar */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1175px) {
     .overlay-stripe-elements.sidebar-active{
         grid-template-rows: auto auto auto;
         grid-template-columns: 1fr;
         row-gap: 0;
-        column-gap: 5%;
+        column-gap: 2%;
     }
     .select,
     .exercise-name{
@@ -1018,10 +1026,34 @@ form select:hover {
     .collapsible{
         grid-column: 2; 
         grid-row: 1 / span 3; 
+        padding: 0;
+    }
+    .overlay-container{
+        padding: 10px 25px;
+    }
+    .overlay-stripe-elements::before {
+        right: 44px;
+    }
+} 
+
+@media screen and (max-width: 1000px) {
+    .overlay-content {
+        width: calc(100% - 70px);
     }
 }
 
+@media screen and (max-width: 880px) {
+    .overlay-content {
+        width: 100%;
+    }
+}
 
+@media screen and (max-width: 800px) {
+    .sidebar.active {
+        z-index: 2;
+        position: absolute;
+    }
+}
 
 /* smaller window without sidebar */
 /* @media screen and (max-width: 1430px) {
@@ -1053,7 +1085,7 @@ form {
 }
 
 .stripe-container {
-    max-width: 98%;
+    max-width: 950px;
     /* position:relative; */
     /* max-width: min-content; */
     width: 100%;
@@ -1062,6 +1094,7 @@ form {
     /* grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); */
     grid-template-columns: 1fr auto;
     align-items: center;
+    justify-items: center;
 }
 
 .stripe-container.database {

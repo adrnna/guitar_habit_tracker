@@ -6,28 +6,6 @@ import { useSidebar } from '../components/SidebarContext';
 
 const Sidebar = () => {
 
-    // const [isSidebarActive, setSidebarActive] = useState(false);
-    // const arrowIcon = document.querySelector('.navbar');
-
-    // // Check screen width and set initial state
-    // useEffect(() => {
-    //     const handleInitialWindowCheck = () => {
-    //         setSidebarActive(window.innerWidth > 768);
-    //         if (arrowIcon) {
-    //             arrowIcon.classList.toggle('active', isSidebarActive);
-    //         }
-
-    //         window.removeEventListener('resize', handleInitialWindowCheck);
-    //     };
-    //     // Initial check on mount
-    //     handleInitialWindowCheck();
-  
-    //     // Cleanup event listeners on component unmount
-    //     return () => {
-    //     window.removeEventListener('resize', handleInitialWindowCheck);
-    //     };
-    //   }, [arrowIcon, isSidebarActive]);  
-
     const { isSidebarActive } = useSidebar();
 
     return (

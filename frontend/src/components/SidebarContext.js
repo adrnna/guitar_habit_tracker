@@ -19,7 +19,6 @@ export const SidebarProvider = ({ children }) => {
     }
   };
 
-
   return (
     <SidebarContext.Provider value={{ isSidebarActive, toggleSidebar }}>
       {children}
@@ -34,6 +33,22 @@ export const useSidebar = () => {
     throw new Error('useSidebar must be used within a SidebarProvider');
   }
   const { isSidebarActive, toggleSidebar } = context;
+
+  // Close the sidebar automatically when the window width is below a certain threshold
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 800 && isSidebarActive) {
+        toggleSidebar();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isSidebarActive, toggleSidebar]);
+
 
   useEffect(() => {
     const arrowIcon = document.querySelector('.navbar');

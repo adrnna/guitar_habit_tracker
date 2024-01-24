@@ -1,38 +1,6 @@
 console.log('eventHandlers.js is loaded.');
 
 
-// Check screen width and set initial state
-// document.addEventListener('DOMContentLoaded', function() {
-//     var sidebar = document.querySelector('.sidebar');
-//     var arrowIcon;
-//     const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
-
-//     if (sidebar) {
-//         const toggleSidebarButton = document.querySelector('.toggle-sidebar-button');
-//         if (toggleSidebarButton) {
-//             arrowIcon = toggleSidebarButton.querySelector('.navbar');
-//         }
-        
-
-//         if (window.innerWidth > 768) { // Adjust the breakpoint as needed
-//             sidebar.classList.add("active");
-//             if (arrowIcon) { 
-//                 arrowIcon.classList.add("active");
-//             }
-//             if (overlayStripeElem) {
-//                 overlayStripeElem.forEach(function(element) {
-//                     element.classList.add("sidebar-active");
-//                 }); 
-//         }
-//         else{
-//             if (overlayStripeElem) {
-//                 overlayStripeElem.forEach(function(element) {
-//                     element.classList.add("sidebar-inactive");
-//                 }); 
-//         }
-//     }
-// }}});
-
 document.addEventListener("DOMContentLoaded", function() {
     const overlayContainer = document.getElementById("overlayContainer");
     let activeDropdown = null;
@@ -52,39 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
-    // Attach event listener for toggling sidebar
-    // if (collapsibleButton) {
-    //     collapsibleButton.forEach(function(button) {
-    //         button.addEventListener("click", function() {
-                
-    //             if (button.parentElement.classList.contains('toggle-sidebar-button')){
-    //                 toggleSidebar();
-    //                 if (overlayStripeElem) {
-    //                     overlayStripeElem.forEach(function(element) {
-    //                         element.classList.toggle("sidebar-active");
-    //                     });
-    //                 }
-    //             }
-    //         })
-    //     })
-    // }
-
 
     if (overlayContainer) {
-        // // Attach event listener for dropdown button clicks
-        // overlayContainer.addEventListener("click", function(event) {
-        //     const dropdownButton = event.target.closest('.dropdown-button');
-        //     if (dropdownButton) {
-        //         handleDropdownButtonClick(event, dropdownButton);
-        //     }
-        // });
-
-        // // Attach event listener for dropdown option clicks
-        // overlayContainer.addEventListener("click", function(event) {
-        //     if (event.target.classList.contains('dropdown-item')) {
-        //         handleDropdownOptionClick(event);
-        //     }
-        // });
 
         //Attach event listener for adding and removing stripes
         overlayContainer.addEventListener("click", function(event) {
@@ -149,14 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-
-        // Attach event listener for collapsible button
-        // overlayContainer.addEventListener("click", function(event) {
-        //     const collapsibleButton = event.target.closest('.btn-collapsible');
-        //     if (collapsibleButton) {
-        //         handleCollapsibleButtonClick(collapsibleButton);
-        //     }
-        // });
 
         // Attach event listener for clicking outside dropdown
         document.addEventListener('click', function(event) {
