@@ -8,39 +8,42 @@ console.log("index.js invoked!");
 const domNode = document.getElementById('app')
 const root = createRoot(domNode);
 
-// const App = () => {
-//     const [loading, setLoading] = useState(true);
+const App = () => {
+    const [loading, setLoading] = useState(true);
   
-//     useEffect(() => {
-//       // Simulate an asynchronous operation (e.g., API call)
-//       const fetchData = async () => {
-//         // Your asynchronous operation here
-//         await new Promise(resolve => setTimeout(resolve, 2000));
+    useEffect(() => {
+      // Simulate an asynchronous operation (e.g., API call)
+      const fetchData = async () => {
+        // Your asynchronous operation here
+        await new Promise(resolve => setTimeout(resolve, 2000));
   
-//         // After the operation is complete, hide the loading overlay
-//         setLoading(false);
-//       };
+        // After the operation is complete, hide the loading overlay
+        setLoading(false);
+      };
+
+      window.onload = () => {
+        fetchData();
+      };
   
-//       fetchData();
-//     }, []);
+    }, []);
 
-//     return (
-//         <React.StrictMode>
-//           {loading ? (
-//             <LoadingOverlay />
-//           ) : (
-//             <AppRoutes />
-//           )}
-//         </React.StrictMode>
-//       );
-//     };
-    
-//     root.render(<App />);
-
-
-    root.render(
+    return (
         <React.StrictMode>
+          {loading ? (
+            <LoadingOverlay />
+          ) : (
             <AppRoutes />
-        </React.StrictMode>    
-    );
+          )}
+        </React.StrictMode>
+      );
+    };
+    
+    root.render(<App />);
+
+
+    // root.render(
+    //     <React.StrictMode>
+    //         <AppRoutes />
+    //     </React.StrictMode>    
+    // );
     

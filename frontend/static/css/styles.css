@@ -6,6 +6,7 @@
 */
 
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -59,7 +60,7 @@ html,body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; 
+    overflow: hidden; 
 }
 
 * {
@@ -88,6 +89,11 @@ input {
 
 
 
+
+
+
+
+
 /* set up css variables */
 :root {
     --top-bar-height: 55px; /* Define the top bar height here */
@@ -97,7 +103,6 @@ input {
     --font-size: 20px;
     --funky-font-color:rgb(0, 0, 0);
     --dark-background-font:rgba(171, 171, 171, 0.918);
-
 }
 
 .top-bar {
