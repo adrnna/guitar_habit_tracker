@@ -28,8 +28,8 @@ const Sidebar = () => {
                 <span className="material-symbols-outlined">home</span>
                 <span className="sidebar-text">{textContent.home}</span>
             </Link>
-            <div id="newSession" onClick={rolloutOptionsClick}>
-                <button className="btn btn-sidebar rollout-options-button">
+            <div id="newSession">
+                <button className="btn btn-sidebar rollout-options-button"  onClick={rolloutOptionsClick}>
                     <span className="material-symbols-outlined">piano</span>
                     <span className="sidebar-text">{textContent.startNewSession}</span>
                 </button>
@@ -38,8 +38,8 @@ const Sidebar = () => {
                     <Link to="just-jam" className="btn btn-sidebar rollout-options sidebar-text">{textContent.justJam}</Link>
                 </div>
             </div>
-            <div id="editRoutine"  onClick={rolloutOptionsClick}>
-                <button className="btn btn-sidebar rollout-options-button">
+            <div id="editRoutine">
+                <button className="btn btn-sidebar rollout-options-button"  onClick={rolloutOptionsClick}>
                     <span className="material-symbols-outlined">add</span>
                     <span className="sidebar-text">{textContent.editYourRoutines}</span>
                 </button>
