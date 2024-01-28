@@ -6,10 +6,12 @@ import textContent from '../../textContent';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { useSidebar } from './SidebarContext';
+import LoadingOverlay from './LoadingOverlay';
 
 
 const Layout = () => {
   const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState(true);
 
 
   // Make an API request to retrieve the current logged-in user's information
@@ -21,6 +23,25 @@ const Layout = () => {
 
   useEffect(() => {
     fetchUsername();
+  }, []);
+
+
+  const fetchData = async () => {
+    // Simulate an asynchronous operation (e.g., API call)
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  };
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        await fetchData(); 
+      } finally {
+        // Set loading to false after the data loading completes (whether it succeeds or fails)
+        setLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
 
@@ -56,10 +77,15 @@ const Layout = () => {
             <span className="material-symbols-outlined navbar" onClick={toggleSidebar}>arrow_right</span>
           </button>
           <Sidebar />
-          <div className="content">
+          
             {/* Specific page content will go here */}
-            <Outlet />
-          </div>
+            {loading ? (
+            <LoadingOverlay />
+            ) : (
+              <div className="content">
+                <Outlet />
+              </div>
+            )}
         </div>
       </div>
     </div>

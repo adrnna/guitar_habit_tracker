@@ -21,7 +21,7 @@ const Sidebar = () => {
         <div className={`sidebar ${isSidebarActive ? 'active' : 'inactive'}`}>
             <div className="sidebar-top">
                 <span className="material-symbols-outlined">music_note</span>
-                <span className="sidebar-text">adrnna</span>
+                <span className="sidebar-text">xx</span>
                 {/* <span className="sidebar-text">{user.username}</span> */}
             </div>
             <Link className="btn btn-sidebar" to="/">
