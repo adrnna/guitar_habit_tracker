@@ -995,14 +995,60 @@ form select:hover {
         grid-column: 3; 
         grid-row: 1 / span 2; 
     }
-    .stripe-and-collapsible  {
+    /* .stripe-and-collapsible  {
         max-width: 800px;
-    }
+    } */
     .exercise_form .stripe-container{
         /* width: fit-content; */
         width: auto;
     }
 }
+
+/* smaller window without sidebar */
+@media screen and (max-width: 1600px) {
+    .overlay-stripe-elements.sidebar-inactive{
+        grid-template-columns: repeat(3, 1fr) minmax(0, auto); 
+        display: grid;
+        gap: 3%;
+        align-items: center;
+    }
+    .sidebar-inactive .collapsible{
+        grid-column: 4; 
+    }
+    .sidebar-inactive .btn-time-group {
+        grid-column: unset; 
+    }
+    .sidebar-inactive .select {
+        margin-left: unset;
+        display: inherit;
+    }
+    .sidebar-inactive .exercise-name{
+        margin-right: unset;
+        display: inherit;
+    }
+}
+
+/* even smaller window without sidebar */
+@media screen and (max-width: 1355px) {
+    .overlay-stripe-elements.sidebar-inactive{
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0;
+        column-gap: 10%;
+    }
+    .sidebar-inactive .collapsible{
+        grid-column: 3; 
+        grid-row: 1 / span 2; 
+    }
+    .sidebar-inactive .btn-time-group {
+        grid-column: span 2; 
+    }
+    .sidebar-inactive .select {
+        margin-left: auto;
+        display: flex;
+    }
+}
+
 
 /* smallest window with sidebar */
 @media screen and (max-width: 1175px) {
@@ -1033,6 +1079,41 @@ form select:hover {
     }
     .overlay-stripe-elements::before {
         right: 44px;
+    }
+} 
+
+/* smallest window without sidebar */
+@media screen and (max-width: 1175px) {
+    .overlay-stripe-elements.sidebar-inactive{
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0;
+        column-gap: 10%;
+    }
+    .sidebar-inactive .select{
+        margin-left: auto;
+        display: flex;
+    }
+    .sidebar-inactive .exercise-name{
+        margin-right: auto;
+        display: flex;
+    }
+    .sidebar-inactive .select .exercise-type{
+        padding-bottom: 10px;
+    }
+    .sidebar-inactive .btn-time-group {
+        grid-column: span 2; 
+    }
+    .sidebar-inactive .collapsible{
+        grid-column: 3; 
+        grid-row: 1 / span 2; 
+        padding: 0 5px;
+    }
+    .overlay-container{
+        padding: 10px 60px;
+    }
+    .overlay-stripe-elements.sidebar-inactive::before {
+        right: 53px;
     }
 } 
 

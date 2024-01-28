@@ -9,7 +9,7 @@ const SingleRoutineStripe = ({routine, exerciseList}) => {
     const filteredExercises = FilteredExercises({exerciseIds, exerciseList});
 
     return (
-        <div>
+        <div className="routine_container">
         <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div>
         <div className="overlay-stripe routine chosen">
             {/* <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div> */}

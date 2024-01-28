@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const collapsibleButton = document.querySelectorAll(".btn-collapsible");
     const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
  
-    if (rolloutOptionsButtons) {
-        rolloutOptionsButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                const rolloutOptionsDiv = button.nextElementSibling;
+    // if (rolloutOptionsButtons) {
+    //     rolloutOptionsButtons.forEach(function(button) {
+    //         button.addEventListener("click", function() {
+    //             const rolloutOptionsDiv = button.nextElementSibling;
 
-                if (rolloutOptionsDiv) {
-                    rolloutOptionsDiv.classList.toggle("visible");
-                }
-            })
-        })
-    }
+    //             if (rolloutOptionsDiv) {
+    //                 rolloutOptionsDiv.classList.toggle("visible");
+    //             }
+    //         })
+    //     })
+    // }
 
 
     if (overlayContainer) {
