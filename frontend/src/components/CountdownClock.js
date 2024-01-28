@@ -1,38 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownClock = ({ targetTime }) => {
-  const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 60);
+
+  useEffect(() => {
+    setTimeRemaining(targetTime * 60); // Reset the timeRemaining when targetTime changes
+  }, [targetTime]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining());
+      setTimeRemaining(prevSeconds => Math.max(prevSeconds - 1, 0));
     }, 1000);
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [targetTime]); 
 
-    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
-
-  }, []); // Empty dependency array ensures the effect runs only once after initial render
-
-  function calculateTimeRemaining() {
-    const now = new Date().getTime();
-    const target = now + targetTime * 60 * 1000; // Convert target time to milliseconds
-    const difference = target - now;
-
-    if (difference <= 0) {
-      // Countdown has reached or passed the target time
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    }
-
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    return { days, hours, minutes, seconds };
-  }
+  const hours = Math.floor(timeRemaining / 60 / 60);
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  
 
   return (
-    <div>
-      <p>{`${timeRemaining.days} days ${timeRemaining.hours} hours ${timeRemaining.minutes} minutes ${timeRemaining.seconds} seconds`}</p>
+    <div className="countdown-clock">
+      <p>{`${hours < 10 ? '0' : ''}${hours}:${minutes === 60 ? '00' : minutes < 10 ? '0' : ''}${minutes < 60 ? minutes : ''}:${seconds < 10 ? '0' : ''}${seconds}`}</p>
     </div>
   );
 };

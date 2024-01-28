@@ -133,7 +133,7 @@ input {
     }
   }
   
-  /* .spinner {
+.spinner {
     border: 5px solid #ffffff;
     border-top: 10px solid #f50b73;
     border-radius: 50%;
@@ -145,7 +145,7 @@ input {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  } */
+  } 
 
 .top-bar {
     display: flex;
@@ -1367,4 +1367,8 @@ thead {
 
 .top-bar .logo-image {
     width: 80px;
+}
+
+.countdown-clock{
+    font-size: 60px;
 }

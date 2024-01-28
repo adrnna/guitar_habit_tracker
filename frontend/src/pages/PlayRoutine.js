@@ -44,15 +44,14 @@ const PlayRoutine = () => {
         <div id="overlayContainer" className="overlay-container">
           <div className="stripe-container ">
             <div className="stripe-and-collapsible overlay-stripe routine">
-              <div>{currentExercise.exercise_name}</div>
-              <div>{currentExercise.time}</div>
+              <div>Item: {currentExercise.exercise_name}</div>
               <CountdownClock
-              targetTime={currentExercise.time}
+                targetTime={currentExercise.time}
               />
               {/* Add more components or content specific to the current exercise */}
             </div>
           </div>
-          <button onClick={handleNextClick}>Next Exercise</button>
+          <button className="btn" onClick={handleNextClick}>{ textContent.nextExerciseBtn}</button>
         </div>
       </div>
     </div>
