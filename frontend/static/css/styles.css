@@ -974,12 +974,8 @@ form select:hover {
     box-shadow: inset 0px 0px 5px 1px #000000d2;
 }
 
-.overlay-stripe.routine {
-    cursor: pointer;
-}
-
-.overlay-stripe.routine.chosen {
-    cursor: default;
+.overlay-stripe.routine.chosen:hover {
+    box-shadow: none;
 }
 
 .overlay-stripe-elements {
@@ -1284,6 +1280,14 @@ form {
 
 .btn-remove-stripe .material-symbols-outlined:hover {
     color: #6f0707fa
+}
+
+.routine_container{
+    cursor: pointer;
+}
+
+.routine_container.chosen{
+    cursor: default;
 }
 
 .routine_title {

@@ -61,12 +61,11 @@ const ChooseRoutine = () => {
           {routineList.map((routine, index) => (
             <div key={index} className="stripe-container ">
                 <div className="stripe-and-collapsible" onClick={() => handleRoutineClick(routine)}>
-                  {/* <div className="overlay-stripe routine" onClick={() => handleRoutineClick(routine)}> */}
-                    <SingleRoutineStripe 
+                  <SingleRoutineStripe 
                     routine={routine} 
                     exerciseList={exerciseList}
-                    />
-                  {/* </div> */}
+                    chosen={false}
+                  />
                 </div>
             </div>
           ))}

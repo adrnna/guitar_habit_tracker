@@ -7,7 +7,7 @@ import PlayButton from "../components/PlayButton";
 
 const ChosenRoutine = () => {
 
-  console.log("ChooseRoutine page is being rendered!");
+  console.log("ChosenRoutine page is being rendered!");
 
   const location = useLocation();
   const selectedRoutine = location.state.selectedRoutine;
@@ -17,20 +17,17 @@ const ChosenRoutine = () => {
   return (
     <div className='content-container'>
       <div className="overlay-content">
-      <div className="title-text-container">
-        <div className="keyword text-box big-text-box">{ textContent.keywordChooseRoutine}</div>
-          {/* <div className="text-box">{ textContent.titleAddRoutine }</div> */}
-          {/* <div className="text-box">{ textContent.newRoutineTitle }</div> */}
+        <div className="title-text-container">
+          <div className="keyword text-box big-text-box">{ textContent.keywordChooseRoutine}</div>
         </div>
         <div id="overlayContainer" className="overlay-container active">
           <div className="stripe-container ">
             <div className="stripe-and-collapsible">
-              {/* <div className="overlay-stripe routine chosen"> */}
-                <SingleRoutineStripe 
+              <SingleRoutineStripe 
                 routine={selectedRoutine} 
                 exerciseList={exerciseList}
-                />
-              {/* </div> */}
+                chosen={true}
+              />
             </div>
           </div>
           <PlayButton routine={selectedRoutine} exerciseList={exerciseList}/>
