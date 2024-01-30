@@ -978,6 +978,10 @@ form select:hover {
     box-shadow: none;
 }
 
+.overlay-stripe.routine.play {
+    min-height: 350px;
+}
+
 .overlay-stripe-elements {
     justify-items: center;
 }
@@ -1375,4 +1379,13 @@ thead {
 
 .countdown-clock{
     font-size: 60px;
+}
+
+.exercise_name{
+    font-size: 25px;
+}
+
+.contact-text{
+    font-size: 30px;
+    color: var(--dark-background-font);
 }

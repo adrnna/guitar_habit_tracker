@@ -38,21 +38,22 @@ const PlayRoutine = () => {
       <div className="overlay-content">
       <div className="title-text-container">
         <div className="keyword text-box big-text-box">{ textContent.keywordPlayRoutine}</div>
-          {/* <div className="text-box">{ textContent.titleAddRoutine }</div> */}
-          {/* <div className="text-box">{ textContent.newRoutineTitle }</div> */}
-        </div>
-        <div id="overlayContainer" className="overlay-container">
-          <div className="stripe-container ">
-            <div className="stripe-and-collapsible overlay-stripe routine">
-              <div>Item: {currentExercise.exercise_name}</div>
+      </div>
+      <div id="overlayContainer" className="overlay-container">
+        <div className="stripe-container ">
+          <div className="stripe-and-collapsible">
+            <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div>
+            <div className="overlay-stripe routine play">
+              <div className="exercise_name">{currentExercise.exercise_type}: {currentExercise.exercise_name}</div>
               <CountdownClock
                 targetTime={currentExercise.time}
               />
               {/* Add more components or content specific to the current exercise */}
             </div>
           </div>
-          <button className="btn" onClick={handleNextClick}>{ textContent.nextExerciseBtn}</button>
         </div>
+        <button className="btn" onClick={handleNextClick}>{ textContent.nextExerciseBtn}</button>
+      </div>
       </div>
     </div>
   );

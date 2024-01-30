@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import textContent from '../../textContent';
 import RoutineForm from '../components/RoutineForm';
 import guitar_pic from '../../static/images/guitar_pic.png';
-import { useSidebar } from '../components/SidebarContext';
+// import { useSidebar } from '../components/SidebarContext';
 
 
 const AddRoutine = () => {
@@ -11,9 +11,8 @@ const AddRoutine = () => {
 
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
-  const overlayStripeElem = document.querySelectorAll(".overlay-stripe-elements");
 
-  const { isSidebarActive } = useSidebar();
+  // const { isSidebarActive } = useSidebar();
 
 
   useEffect(() => {

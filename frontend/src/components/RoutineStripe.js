@@ -17,8 +17,8 @@ const RoutineStripe = ({index, routine, exerciseList}) => {
         <div key={index} className="stripe-container ">
             <div className="stripe-and-collapsible overlay-stripe routine" onClick={handleRoutineClick}>
                 <SingleRoutineStripe 
-                routine={selectedRoutine} 
-                exerciseList={exerciseList}
+                    routine={selectedRoutine} 
+                    exerciseList={exerciseList}
                 />
             </div>
         </div>

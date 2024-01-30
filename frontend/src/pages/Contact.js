@@ -15,7 +15,7 @@ const Contact = () => {
             <div className="text-box">{ textContent.newRoutineTitle }</div> */}
           </div>
         <div id="overlayContainer" className="overlay-container">
-            
+          <div className="contact-text">{ textContent.contactText}</div>
         </div>
       </div>
     </div>

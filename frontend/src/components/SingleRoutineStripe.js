@@ -12,7 +12,6 @@ const SingleRoutineStripe = ({routine, exerciseList, chosen}) => {
         <div className={`routine_container ${chosen ? 'chosen' : ''}`}>
             <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div>
             <div className={`overlay-stripe routine ${chosen ? 'chosen' : ''}`}>
-                {/* <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div> */}
                 <div className="routine-table-container">
                     <table className="routine-table">
                         <thead>
