@@ -32,6 +32,7 @@ const Sidebar = () => {
                 <button className="btn btn-sidebar rollout-options-button"  onClick={rolloutOptionsClick}>
                     <span className="material-symbols-outlined">piano</span>
                     <span className="sidebar-text">{textContent.startNewSession}</span>
+                    <span className="material-symbols-outlined" style={{ marginLeft: 'auto' }}>arrow_drop_down</span>
                 </button>
                 <div id="rolloutOptions">
                     <Link to="choose-routine" className="btn btn-sidebar rollout-options sidebar-text">{textContent.chooseYourRoutine}</Link>
@@ -42,6 +43,7 @@ const Sidebar = () => {
                 <button className="btn btn-sidebar rollout-options-button"  onClick={rolloutOptionsClick}>
                     <span className="material-symbols-outlined">add</span>
                     <span className="sidebar-text">{textContent.editYourRoutines}</span>
+                    <span className="material-symbols-outlined" style={{ marginLeft: 'auto' }}>arrow_drop_down</span>
                 </button>
                 <div id="rolloutOptions">
                     <Link to="edit-routine" className="btn btn-sidebar rollout-options sidebar-text">{textContent.editYourRoutines}</Link>
