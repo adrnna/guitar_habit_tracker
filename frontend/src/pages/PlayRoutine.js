@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import textContent from '../../textContent';
 import FilteredExercises from '../components/FilteredExercises';
 import CountdownClock from "../components/CountdownClock";
+import ControlButtons from '../components/ControlButtons';
+
 
 
 const PlayRoutine = () => {
@@ -14,6 +16,7 @@ const PlayRoutine = () => {
   const routine = location.state.selectedRoutine;
   const exerciseList = location.state.exerciseList;  
 
+  // get all the routine info and keep track of current exercise
   const exerciseIds = routine.exercises;
   const filteredExercises = FilteredExercises({exerciseIds, exerciseList});
   console.log(filteredExercises);
@@ -24,6 +27,7 @@ const PlayRoutine = () => {
     // Check if there is a next exercise
     if (currentExerciseIndex < filteredExercises.length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
+      setIsPaused(true);
     } else {
       // Navigate to a different page or handle the end of exercises
       navigate('/choose-routine');
@@ -31,6 +35,18 @@ const PlayRoutine = () => {
   };
 
   const currentExercise = filteredExercises[currentExerciseIndex];
+
+
+  // control the state of the timer and pass functions to ControlButtons
+  const [isPaused, setIsPaused] = useState(true);
+
+  const onPause = () => {
+    setIsPaused(true);
+  };
+
+  const onPlay = () => {
+      setIsPaused(false);
+  };
 
 
   return (
@@ -45,14 +61,21 @@ const PlayRoutine = () => {
             <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div>
             <div className="overlay-stripe routine play">
               <div className="exercise_name">{currentExercise.exercise_type}: {currentExercise.exercise_name}</div>
+              <div className="exercise_description">{currentExercise.description}</div>
               <CountdownClock
                 targetTime={currentExercise.time}
+                isPaused={isPaused}
               />
               {/* Add more components or content specific to the current exercise */}
             </div>
           </div>
         </div>
-        <button className="btn" onClick={handleNextClick}>{ textContent.nextExerciseBtn}</button>
+        <ControlButtons
+          isPaused={isPaused}
+          onPause={onPause} 
+          onPlay={onPlay}
+        />
+        <button className="btn btn-save" onClick={handleNextClick}>{ textContent.nextExerciseBtn}</button>
       </div>
       </div>
     </div>

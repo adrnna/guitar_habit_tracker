@@ -204,7 +204,8 @@ input {
     width: 0;
     /* background: linear-gradient(to bottom, #2f273bd6, #000a0af5); */
     /* background: linear-gradient(to bottom, #dfdbe5d6, #000a0af5); */
-    background: linear-gradient(to top, #666569f7, rgb(33 45 69));
+    /* background: linear-gradient(to top, #666569f7, rgb(33 45 69)); */
+    background: linear-gradient(to top, #626d85f7, rgb(0 13 38));
 
     box-shadow: 1px 8px 20px 7px #1b2130;
     overflow-y: auto;
@@ -974,7 +975,8 @@ form select:hover {
     box-shadow: inset 0px 0px 5px 1px #000000d2;
 }
 
-.overlay-stripe.routine.chosen:hover {
+.overlay-stripe.routine.chosen:hover,
+.overlay-stripe.routine.play:hover {
     box-shadow: none;
 }
 
@@ -1299,7 +1301,8 @@ form {
     font-weight: bold;
     font-size: 30px;
     padding: 10px;
-    background: linear-gradient(to bottom, #fefffe6b, 70%, #000000b7 );
+    background: linear-gradient(to top, #ffbfe647, 70%, #1d4b5eb7 );
+    border-radius: 8px;
 }
 
 .exercise-info {
@@ -1388,4 +1391,23 @@ thead {
 .contact-text{
     font-size: 30px;
     color: var(--dark-background-font);
+}
+
+.control-buttons{
+    padding: 20px;
+}
+
+.control-button{
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.control-button:hover{
+    background-color: red;
+}
+
+.control-icon{
+    font-size: 60px;
+    background: inherit;
+    padding: 10px 20px;
 }

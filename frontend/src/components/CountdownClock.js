@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CountdownClock = ({ targetTime }) => {
+const CountdownClock = ({ targetTime, isPaused }) => {
   const [timeRemaining, setTimeRemaining] = useState(targetTime * 60);
 
   useEffect(() => {
@@ -8,12 +8,19 @@ const CountdownClock = ({ targetTime }) => {
   }, [targetTime]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeRemaining(prevSeconds => Math.max(prevSeconds - 1, 0));
-    }, 1000);
-    // Cleanup interval on component unmount
+    let intervalId;
+
+    if (!isPaused) {
+      intervalId = setInterval(() => {
+        setTimeRemaining(prevSeconds => Math.max(prevSeconds - 1, 0));
+      }, 1000);
+    }
+    // Cleanup interval on component unmount or when paused
     return () => clearInterval(intervalId);
-  }, [targetTime]); 
+  }, [targetTime, isPaused]);
+
+
+
 
   const hours = Math.floor(timeRemaining / 60 / 60);
   const minutes = Math.floor(timeRemaining / 60);
