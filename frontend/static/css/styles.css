@@ -148,15 +148,16 @@ input {
   } 
 
 .top-bar {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     width: auto;
     height: var(--top-bar-height);
     overflow: hidden;
     align-items: center;
-    background-color: #1a2131;
+    background: linear-gradient(to bottom, #00153aeb, rgb(0 13 38));
     color: white;
-    box-shadow: inset 0px -7px 20px 0px rgb(33 45 69);
+    box-shadow: 20px 7px 20px 0px #091020;
     font-size: var(--font-size);
 }
 
@@ -970,16 +971,6 @@ form select:hover {
     position: relative;
 }
 
-.overlay-stripe:hover {
-    /* background: #f4f1ffc2; */
-    box-shadow: inset 0px 0px 5px 1px #000000d2;
-}
-
-.overlay-stripe.routine.chosen:hover,
-.overlay-stripe.routine.play:hover {
-    box-shadow: none;
-}
-
 .overlay-stripe.routine.play {
     min-height: 350px;
 }
@@ -1240,11 +1231,6 @@ form {
     border-radius: 8px;
 }
 
-.stripe-and-collapsible:hover {
-    /* background: rgb(181 117 150 / 16%); */
-    box-shadow: inset 0px 0px 6px 2px #000000d2;
-}
-
 .btn-add-or-remove-stripe {
     max-width:min-content;
     position: relative;
@@ -1301,9 +1287,29 @@ form {
     font-weight: bold;
     font-size: 30px;
     padding: 10px;
-    background: linear-gradient(to top, #ffbfe647, 70%, #1d4b5eb7 );
+    background: linear-gradient(to top, #ffcdeb8f, 70%, #b4d2ff9c );
+    box-shadow: inset 1px 1px 6px 1px rgb(1 14 39);
     border-radius: 8px;
 }
+
+.routine_container:hover,
+.routine_container.chosen,
+.routine_container.play,
+.stripe-and-collapsible:hover
+{
+    .routine_title {
+        background: linear-gradient(to top, #ffcdebe3, 70%, #b4d2ffab );
+    }
+    .overlay-stripe {
+        background: rgb(238, 236, 255);
+        box-shadow: inset 0px 0px 5px 1px #000000d2;
+    }
+
+}
+
+/* .stripe-and-collapsible:hover {
+    box-shadow: inset 0px 0px 6px 2px #000000d2;
+} */
 
 .exercise-info {
     display: block;
