@@ -42,7 +42,7 @@ const Sidebar = () => {
             <div id="editRoutine">
                 <button className="btn btn-sidebar rollout-options-button"  onClick={rolloutOptionsClick}>
                     <span className="material-symbols-outlined">add</span>
-                    <span className="sidebar-text">{textContent.editYourRoutines}</span>
+                    <span className="sidebar-text">{textContent.manageYourRoutines}</span>
                     <span className="material-symbols-outlined" style={{ marginLeft: 'auto' }}>arrow_drop_down</span>
                 </button>
                 <div id="rolloutOptions">

@@ -58,8 +58,8 @@ const PlayRoutine = () => {
       <div id="overlayContainer" className="overlay-container">
         <div className="stripe-container ">
           <div className="stripe-and-collapsible">
-            <div className="routine_container play">
-              <div className="routine_title">{textContent.routineTitle}{routine.routine_name}</div>
+            <div className="routine-container play">
+              <div className="routine-title">{textContent.routineTitle}{routine.routine_name}</div>
               <div className="overlay-stripe routine play">
                 <div className="exercise_name">{currentExercise.exercise_type}: {currentExercise.exercise_name}</div>
                 <div className="exercise_description">{currentExercise.description}</div>

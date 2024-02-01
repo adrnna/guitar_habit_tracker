@@ -18,36 +18,36 @@ const ChooseRoutine = () => {
   const [exerciseList, setExerciseList] = useState([]);
   const [selectedRoutine, setSelectedRoutine] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const routineResponse = await fetch('api/routines/');
-        if (!routineResponse.ok) {
-          throw new Error(`Error: ${routineResponse.status}`);
-        }
-        const routineData = await routineResponse.json();
-        // flip the order so the newest routine is on top
-        setRoutineList(routineData.reverse());
 
-        const exerciseResponse = await fetch('api/exercises/');
-        if (!exerciseResponse.ok) {
-          throw new Error(`Error: ${exerciseResponse.status}`);
-        }
-        const exerciseData = await exerciseResponse.json();
-        setExerciseList(exerciseData);
-
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  const fetchData = async () => {
+    try {
+      const routineResponse = await fetch('api/routines/');
+      if (!routineResponse.ok) {
+        throw new Error(`Error: ${routineResponse.status}`);
       }
-    };
+      const routineData = await routineResponse.json();
+      setRoutineList(routineData.reverse());
 
+      const exerciseResponse = await fetch('api/exercises/');
+      if (!exerciseResponse.ok) {
+        throw new Error(`Error: ${exerciseResponse.status}`);
+      }
+      const exerciseData = await exerciseResponse.json();
+      setExerciseList(exerciseData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, []); 
 
   const handleRoutineClick  = (routine) => {
     setSelectedRoutine(routine);
     navigate(`/choose-routine/${routine.id}`, { state: { selectedRoutine: routine, exerciseList: exerciseList} });
   };
+
 
   return (
     <div className='content-container'>
@@ -58,16 +58,14 @@ const ChooseRoutine = () => {
           <div className="text-box">{ textContent.newRoutineTitle }</div> */}
         </div>
         <div id="overlayContainer" className="overlay-container active">
-          {routineList.map((routine, index) => (
-            <div key={index} className="stripe-container ">
-                <div className="stripe-and-collapsible" onClick={() => handleRoutineClick(routine)}>
-                  <SingleRoutineStripe 
-                    routine={routine} 
-                    exerciseList={exerciseList}
-                    chosen={false}
-                  />
-                </div>
-            </div>
+          {routineList.map((routine, index) => (              
+              <SingleRoutineStripe 
+                key={index}
+                routine={routine} 
+                exerciseList={exerciseList}
+                chosen={false}
+                handleRoutineClick={handleRoutineClick}
+              />
           ))}
         </div>
       </div>

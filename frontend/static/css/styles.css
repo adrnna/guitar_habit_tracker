@@ -1233,6 +1233,13 @@ form {
     border-radius: 8px;
 }
 
+.stripe-and-collapsible.routine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
 .btn-add-or-remove-stripe {
     max-width:min-content;
     position: relative;
@@ -1276,15 +1283,16 @@ form {
     color: #6f0707fa
 }
 
-.routine_container{
+.routine-container{
     cursor: pointer;
+    width: inherit;
 }
 
-.routine_container.chosen{
+.routine-container.chosen{
     cursor: default;
 }
 
-.routine_title {
+.routine-title {
     text-align: left;
     font-weight: bold;
     font-size: 30px;
@@ -1294,12 +1302,12 @@ form {
     border-radius: 8px;
 }
 
-.routine_container:hover,
-.routine_container.chosen,
-.routine_container.play,
+.routine-container:hover,
+.routine-container.chosen,
+.routine-container.play,
 .stripe-and-collapsible:hover
 {
-    .routine_title {
+    .routine-title {
         background: #9194ff82;
     }
     .overlay-stripe {
@@ -1418,4 +1426,17 @@ thead {
     font-size: 60px;
     background: inherit;
     padding: 10px 20px;
+}
+
+.total-time{
+    color: var(--dark-background-font);
+    transform: rotate(270deg);
+    font-size: 30px;
+    min-width: 40px;
+    display: flex;
+    align-items: baseline;
+}
+
+.time-unit{
+    font-size: 20px;
 }
