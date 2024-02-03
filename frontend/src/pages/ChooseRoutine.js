@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import textContent from '../../textContent';
 import { useNavigate } from 'react-router-dom';
 import SingleRoutineStripe from "../components/SingleRoutineStripe";
-import { useSidebar } from '../components/SidebarContext';
+// import { useSidebar } from '../components/SidebarContext';
 
 
 const ChooseRoutine = () => {
@@ -17,6 +17,7 @@ const ChooseRoutine = () => {
   const [routineList, setRoutineList] = useState([]);
   const [exerciseList, setExerciseList] = useState([]);
   const [selectedRoutine, setSelectedRoutine] = useState();
+  const [loading, setLoading] = useState(true);
 
 
   const fetchData = async () => {
@@ -34,6 +35,12 @@ const ChooseRoutine = () => {
       }
       const exerciseData = await exerciseResponse.json();
       setExerciseList(exerciseData);
+
+      // Simulate a minimum loading duration
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -54,11 +61,13 @@ const ChooseRoutine = () => {
       <div className="overlay-content">
         <div className="title-text-container">
           <div className="keyword text-box big-text-box">{ textContent.keywordChooseRoutine}</div>
-          {/* <div className="text-box">{ textContent.titleAddRoutine }</div>
-          <div className="text-box">{ textContent.newRoutineTitle }</div> */}
         </div>
         <div id="overlayContainer" className="overlay-container active">
-          {routineList.map((routine, index) => (              
+          {/* Wait for exerciseList to be populated before rendering components */}
+          {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            routineList.map((routine, index) => (              
               <SingleRoutineStripe 
                 key={index}
                 routine={routine} 
@@ -66,7 +75,8 @@ const ChooseRoutine = () => {
                 chosen={false}
                 handleRoutineClick={handleRoutineClick}
               />
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

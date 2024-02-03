@@ -139,13 +139,18 @@ input {
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite, fadeIn 0.5s ease-out;
   }
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   } 
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
 .top-bar {
     position: sticky;
