@@ -32,11 +32,12 @@ const SingleRoutineStripe = ({routine, exerciseList, chosen, handleRoutineClick}
     
     return (
         <div className="stripe-container">
-
             <div className="stripe-and-collapsible routine" onClick={() => handleRoutineClick(routine)}>
-                <div className="total-time">
-                    <div>{totalTime}</div>
-                    <div className="time-unit">&nbsp;{textContent.timeUnit}</div>
+                <div className="total-time-container">
+                    <div className="total-time">
+                        <div>{totalTime}</div>
+                        <div className="time-unit">&nbsp;{textContent.timeUnit}</div>
+                    </div>
                 </div>
                 <div className={`routine-container ${chosen ? 'chosen' : ''}`}>
                     <div className="routine-title">{textContent.routineTitle}{routine.routine_name}</div>

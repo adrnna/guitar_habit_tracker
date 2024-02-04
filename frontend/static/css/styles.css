@@ -1291,6 +1291,7 @@ form {
 .routine-container{
     cursor: pointer;
     width: inherit;
+    flex-grow: 1;
 }
 
 .routine-container.chosen{
@@ -1318,6 +1319,10 @@ form {
     .overlay-stripe {
         background: rgb(209 208 221);
         /* box-shadow: inset 0px 0px 5px 1px #000000d2; */
+    }
+    .total-time{
+        width: 60px;
+        transition: width 0.3s ease;
     }
 
 }
@@ -1433,13 +1438,18 @@ thead {
     padding: 10px 20px;
 }
 
+.total-time-container{
+    transform: rotate(270deg);
+}
+
 .total-time{
     color: var(--dark-background-font);
-    transform: rotate(270deg);
     font-size: 30px;
     min-width: 40px;
     display: flex;
     align-items: baseline;
+    justify-content: center;
+    width: 75px;
 }
 
 .time-unit{

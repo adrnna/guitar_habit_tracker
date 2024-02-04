@@ -67,7 +67,7 @@ const ChooseRoutine = () => {
           {loading ? (
             <div className="spinner"></div>
           ) : (
-            routineList.map((routine, index) => (              
+            routineList.map((routine, index) => (
               <SingleRoutineStripe 
                 key={index}
                 routine={routine} 
