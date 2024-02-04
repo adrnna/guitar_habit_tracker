@@ -1184,7 +1184,7 @@ form select:hover {
 } */
 
 .overlay-text {
-    font-size: 28px;
+    font-size: 25px;
     color: var(--dark-background-font);
     padding: 20px;
     width: auto;

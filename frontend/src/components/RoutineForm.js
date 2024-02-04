@@ -14,15 +14,16 @@ const RoutineForm = ({setSuccess}) => {
   }));
 
   const [routineName, setRoutineName] = useState('');
-  const [exercises, setExercises] = useState(initialExercises);
   const [exerciseInfo, setExerciseInfo] = useState(initialExercises);
 
   const handleAddExercise = () => {
-    setExercises([...exercises, { name: '', time: '', description: '', link: '' }]);
+    console.log("ADDING EXERCISE");
+    setExerciseInfo([...exerciseInfo, { name: '', time: '', description: '', link: '' }]);
   };
 
   const handleRemoveExercise = (index) => {
-    setExercises(exercises.filter((row, i) => i !== index));
+    console.log("REMOVING EXERCISE");
+    setExerciseInfo(exerciseInfo.filter((row, i) => i !== index));
   };
 
   const submitExercises = async (csrftoken) => {
