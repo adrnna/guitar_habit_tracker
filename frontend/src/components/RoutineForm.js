@@ -16,9 +16,17 @@ const RoutineForm = ({setSuccess}) => {
   const [routineName, setRoutineName] = useState('');
   const [exerciseInfo, setExerciseInfo] = useState(initialExercises);
 
-  const handleAddExercise = () => {
+  const handleAddExercise = (index) => {
     console.log("ADDING EXERCISE");
-    setExerciseInfo([...exerciseInfo, { name: '', time: '', description: '', link: '' }]);
+    // Get the exercise at the specified index
+    const exerciseToAdd = exerciseInfo[index];
+    console.log(exerciseToAdd);
+    // Add a copy of the exercise to the exerciseInfo array
+    const beforeIndex = exerciseInfo.slice(0, index + 1);
+    const afterIndex = exerciseInfo.slice(index + 1);
+    setExerciseInfo([...beforeIndex, exerciseToAdd, ...afterIndex]);
+    // setExerciseInfo([...exerciseInfo, { ...exerciseToAdd }]);
+    // setExerciseInfo([...exerciseInfo, { name: '', time: '', description: '', link: '' }]);
   };
 
   const handleRemoveExercise = (index) => {

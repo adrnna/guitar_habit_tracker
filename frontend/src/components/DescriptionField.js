@@ -1,7 +1,7 @@
 import React from 'react';
 import InputFieldUtils from './InputFieldUtils';
 
-const DescriptionField = ({ onInput, onFocus, placeholder }) => {
+const DescriptionField = ({ value, onInput, onFocus, placeholder }) => {
 
 
   return (
@@ -14,6 +14,7 @@ const DescriptionField = ({ onInput, onFocus, placeholder }) => {
         onFocus={onFocus}
         rows="2"
         placeholder={placeholder}
+        value={value}
       />
     </InputFieldUtils>
   );

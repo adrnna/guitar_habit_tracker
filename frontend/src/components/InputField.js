@@ -1,7 +1,7 @@
 import React from 'react';
 import InputFieldUtils from './InputFieldUtils';
 
-const InputField = ({ onInput, placeholder, classNameContainer, className }) => {
+const InputField = ({ value, onInput, placeholder, classNameContainer, className }) => {
 
   const handleEnterKey = (event) => {
     if (event.key === 'Enter') {
@@ -70,6 +70,7 @@ const InputField = ({ onInput, placeholder, classNameContainer, className }) => 
           onInput={onInput}
           onKeyDown={handleEnterKey}
           placeholder={placeholder}
+          value={value}
         />
         <button type="button" className="btn btn-confirm" onClick={toggleInput}>
           <span className="material-symbols-outlined">check</span>

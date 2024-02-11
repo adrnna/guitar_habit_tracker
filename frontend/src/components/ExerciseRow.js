@@ -11,7 +11,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
 
 
-const ExerciseRow = ({ exercise, index, exerciseInfo, setExerciseInfo, onRemove, onAdd, }) => {
+const ExerciseRow = ({ index, exerciseInfo, setExerciseInfo, onRemove, onAdd, }) => {
 
   const typeOptions = textContent.typeOptions;
   const timeChoices = textContent.timeChoices;
@@ -88,7 +88,7 @@ const ExerciseRow = ({ exercise, index, exerciseInfo, setExerciseInfo, onRemove,
           <div className="stripe-and-collapsible">
             <div className="overlay-stripe">
               <div className="overlay-stripe-elements">
-                <SelectType value={exerciseInfo[index]?.type || ''} onChange={handleTypeChange} options={typeOptions} defaultValue={exercise.type}/>
+                <SelectType value={exerciseInfo[index]?.type || ''} onChange={handleTypeChange} options={typeOptions}/>
                 <InputField value={exerciseInfo[index]?.name || ''} onInput={handleNameInput} placeholder={textContent.inputPlaceholder} classNameContainer="exercise-name" className="input-box" />
                 <TimeRadioGroup selectedTime={exerciseInfo[index]?.time || ''} onChange={handleTimeSelect} timeChoices={timeChoices} timeUnit={timeUnit} index={index}/>
                 <CollapsibleButton/>

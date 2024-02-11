@@ -1,12 +1,13 @@
 import React from 'react';
 
-const SelectType = ({ onChange, options, defaultValue }) => {
+const SelectType = ({ value, onChange, options }) => {
 
   return (
     <div className="select">
         <select 
             className="exercise-type" 
-            defaultValue={defaultValue}
+            // defaultValue={defaultValue}
+            value={value}
             onChange={onChange}
             >
             {options.map((option, index) => (

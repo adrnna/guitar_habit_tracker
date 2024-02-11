@@ -1,7 +1,7 @@
 import React from 'react';
 import InputFieldUtils from './InputFieldUtils';
 
-const LinkField = ({ onInput, onFocus, placeholder }) => {
+const LinkField = ({ value, onInput, onFocus, placeholder }) => {
 
   function toggleInput() {
     console.log("link bla")
@@ -16,6 +16,7 @@ const LinkField = ({ onInput, onFocus, placeholder }) => {
           placeholder={placeholder}
           onFocus={onFocus}
           onInput={onInput}
+          value={value}
         />
         <button type="button" className="btn btn-confirm" onClick={toggleInput}>
           <span className="material-symbols-outlined">check</span>
