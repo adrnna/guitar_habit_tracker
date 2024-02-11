@@ -26,8 +26,11 @@ const ChooseRoutine = () => {
       if (!routineResponse.ok) {
         throw new Error(`Error: ${routineResponse.status}`);
       }
-      const routineData = await routineResponse.json();
-      setRoutineList(routineData.reverse());
+      let routineData = await routineResponse.json();
+      // setRoutineList(routineData.reverse());
+      // Sort routines based on timestamp in descending order
+      routineData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      setRoutineList(routineData);
 
       const exerciseResponse = await fetch('api/exercises/');
       if (!exerciseResponse.ok) {

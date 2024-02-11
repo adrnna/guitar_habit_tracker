@@ -24,6 +24,7 @@ class Exercise(models.Model):
 class Routine(models.Model):
     routine_name = models.CharField(max_length=200, default='')
     exercises = models.ManyToManyField(Exercise, blank = True,)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.routine_name  

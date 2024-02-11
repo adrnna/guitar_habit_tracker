@@ -63,6 +63,7 @@ const RoutineForm = ({setSuccess}) => {
     const routineData = {
       routine_name: routineName,
       exercises: exerciseIds,
+      timestamp: new Date().toISOString(),
     };
     await axios.post('api/routines/', routineData, {
       headers: {
